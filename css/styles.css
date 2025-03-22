@@ -1,0 +1,76 @@
+/* styles.css */
+
+:root {
+  --primary: #3C91E6;
+  --secondary: #F9A620;
+  --neutral: #f4f4f4;
+  --dark: #222;
+  --light: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--neutral);
+  color: var(--dark);
+}
+
+header, footer {
+  background: var(--primary);
+  color: var(--light);
+  padding: 1rem;
+  text-align: center;
+}
+
+nav a {
+  color: var(--light);
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 2rem;
+}
+
+footer {
+  font-size: 0.9rem;
+}
+
+.button {
+  background: var(--secondary);
+  color: var(--dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+form input, form select, form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+form button {
+  background-color: var(--primary);
+  color: var(--light);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+iframe {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
