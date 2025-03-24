@@ -39,7 +39,7 @@ footer {
 }
 
 .button {
-  background: var(--neutral);
+  background: var(--tertiary);
   color: var(--dark);
   border: none;
   padding: 0.5rem 1rem;
