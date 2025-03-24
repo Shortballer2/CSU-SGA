@@ -3,7 +3,8 @@
 :root {
   --primary: #1B2CC1;
   --secondary: #92140C;
-  --neutral: #FFCF99;
+  ---tertiary: #FFCF99;
+  --neutral: #FFFFFF;
   --dark: #222;
   --light: #fff;
 }
