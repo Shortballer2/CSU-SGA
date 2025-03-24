@@ -3,7 +3,7 @@
 :root {
   --primary: #1B2CC1;
   --secondary: #92140C;
-  --neutral: #f4f4f4;
+  --neutral: #FFCF99;
   --dark: #222;
   --light: #fff;
 }
@@ -38,7 +38,7 @@ footer {
 }
 
 .button {
-  background: var(--secondary);
+  background: var(--neutral);
   color: var(--dark);
   border: none;
   padding: 0.5rem 1rem;
