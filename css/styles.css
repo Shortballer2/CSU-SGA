@@ -4,7 +4,7 @@
   --primary: #1B2CC1;
   --secondary: #92140C;
   ---tertiary: #FFCF99;
-  --neutral: #FFFFFF;
+  --neutral: #F5F6FA;
   --dark: #222;
   --light: #fff;
 }
@@ -14,6 +14,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--neutral);
   color: var(--dark);
+  text-align: center;
 }
 
 header, footer {
