@@ -3,7 +3,7 @@
 :root {
   --primary: #1B2CC1;
   --secondary: #92140C;
-  ---tertiary: #FFCF99;
+  --tertiary: #FFCF99;
   --neutral: #bababb;
   --dark: #222;
   --light: #fff;
@@ -40,7 +40,7 @@ footer {
 }
 
 .button {
-  background: var(---tertiary);
+  background: var(--tertiary);
   color: var(--dark);
   border: none;
   padding: 0.5rem 1rem;
