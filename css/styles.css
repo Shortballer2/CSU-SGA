@@ -1,3 +1,22 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 /* styles.css */
 
 :root {
@@ -52,10 +71,19 @@ footer {
   border: none;
   padding: 0.5rem 1rem;
   font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
-  margin-top: 1rem;
+  margin: 1rem 0.5rem 0 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: #f5b86a;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 form input, form select, form textarea {
