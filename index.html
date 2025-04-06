@@ -1,44 +1,82 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Home | Hannah Dawson &amp; Shane Mathis</title>
-<link href="/css/styles.css" rel="stylesheet"/>
-<script src="/js/main.js"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="/Favicon.ico" rel="icon" type="image/png"/></head>
-<body><div class="wrapper">
-<div class="Wrapper">
-<!-- Header -->
-<header>
-<h1>Home</h1>
-<nav>
-<a href="/">Home</a>
-<a href="/About/">About</a>
-<a href="/Events/">Events</a>
-<a href="/Idea/">Submit Idea</a>
-<a href="/Media/">Media</a>
-<a href="/Contact/">Contact</a>
-</nav>
-</header>
-<!-- Main Content -->
-<main>
-<h2>Welcome to the Campaign!</h2>
-<p>We’re Hannah Dawson and Shane Mathis, and we’re running to serve YOU as your next Student Body President and Vice President.</p>
-<a class="button" href="/About/">Meet Us</a>
-<a class="button" href="/Contact/">Contact Us</a>
-<a class="button" href="/Idea/">Submit an Idea</a>
-<a class="button" href="/Events/">See Events</a>
-<a class="button" href="/Media/">View pictures and videos</a>
-</main>
-<!-- Footer -->
-<footer>
-<p>© 2025 Dawson &amp; Mathis Campaign. All rights reserved.</p>
-</footer>
-</div>
-</div></body>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home | Hannah Dawson & Shane Mathis</title>
+
+  <!-- Styles and Fonts -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/main.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/Favicon.ico" />
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 1rem 0.5rem; /* adds vertical and horizontal space between buttons */
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: var(--light);
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- Header -->
+    <header>
+      <h1>Home</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/About/">About</a>
+        <a href="/Events/">Events</a>
+        <a href="/Idea/">Submit Idea</a>
+        <a href="/Media/">Media</a>
+        <a href="/Contact/">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <h2>Welcome to the Campaign!</h2>
+      <p>We’re Hannah Dawson and Shane Mathis, and we’re running to serve YOU as your next Student Body President and Vice President.</p>
+
+      <!-- Buttons with spacing -->
+      <a class="button" href="/About/">Meet Us</a>
+      <a class="button" href="/Contact/">Contact Us</a>
+      <a class="button" href="/Idea/">Submit an Idea</a>
+      <a class="button" href="/Events/">See Events</a>
+      <a class="button" href="/Media/">View pictures and videos</a>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
+    </footer>
+    
+  </div>
+</body>
 </html>
