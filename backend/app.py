@@ -15,7 +15,7 @@ EMAIL_PASSWORD = os.environ.get("lsiv eklw erlu uioi")
 def home():
     return "🎉 Backend is live!"
 
-@app.route("/submit", methods=["POST"])
+@app.route("/idea", methods=["POST"])
 def submit():
     data = request.json
     print("Received submission:", data)
@@ -28,6 +28,14 @@ def submit():
             return jsonify({"status": "error", "message": "Email failed"}), 500
 
     return jsonify({"status": "success", "message": "Thanks for your idea!"})
+
+@app.route("/contact", methods=["POST"])
+def contact():
+    data = request.json
+    print("Contact submission:", data)
+    # Optionally email it, log it, etc.
+    return jsonify({"status": "success", "message": "Message received!"})
+
 
 def send_email(data):
     msg = EmailMessage()
