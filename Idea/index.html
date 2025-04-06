@@ -27,6 +27,13 @@
 <button class="button" type="submit">Submit</button>
 <button type="submit">Submit</button>
 <button type="submit">Submit</button>
+<script>
+        function toggleFollowUpFields() {
+          const followUpChoice = document.getElementById("followup-choice").value;
+          const optionalFields = document.getElementById("optional-fields");
+          optionalFields.style.display = followUpChoice === "followup" ? "block" : "none";
+        }
+        </script>
 </form>
 </main>
 <footer>
