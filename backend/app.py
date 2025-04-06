@@ -13,7 +13,7 @@ CORS(app)  # Allow cross-origin requests (from dawsonandmathis.com)
 EMAIL_ADDRESS = os.environ.get("mathisvpcampaign@gmail.com")
 EMAIL_PASSWORD = os.environ.get("lsiv eklw erlu uioi")
 
-@app.route("/")
+@app.route("/submit")
 def home():
     return "🎉 Backend is live!"
 
