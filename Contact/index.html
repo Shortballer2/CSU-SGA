@@ -27,19 +27,31 @@
 
 <main>
   <h2>Send Us a Message</h2>
-  <form action="https://docs.google.com/forms/d/e/YOUR_CONTACT_FORM_ID/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-    <label for="name">Name *</label>
-    <input type="text" id="name" name="entry.1234567890" required>
+  <form
+  id="contact-form"
+  action="https://forms.gle/L1c4T86yRsiQiuBM6"
+  method="POST"
+  target="hidden_iframe"
+  onsubmit="submitted=true;">
   
-    <label for="email">Email *</label>
-    <input type="email" id="email" name="entry.2345678901" required>
+  <label for="name">Name *</label>
+  <input type="text" id="name" name="entry.1832206281" required>
   
-    <label for="message">Message *</label>
-    <textarea id="message" name="entry.3456789012" required></textarea>
+  <label for="email">Email *</label>
+  <input type="email" id="email" name="entry.249345091" required>
   
-    <button type="submit">Submit</button>
-  </form>
-  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('Thank you! Your message has been sent.'); }"></iframe>  
+  <label for="message">Message *</label>
+  <textarea id="message" name="entry.146502396" rows="5" required></textarea>
+  
+  <button type="submit">Submit</button>
+</form>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccessMessage(); }"></iframe>
+
+<div id="form-success" style="display:none; margin-top: 1rem; color: green; font-weight: bold;">
+  ✅ Your message has been sent!
+</div>
+
 </main>
 
 <footer>
@@ -47,6 +59,14 @@
 </footer>
 </div>
 
-
+<script>
+  let submitted = false;
+  
+  function showSuccessMessage() {
+    document.getElementById("form-success").style.display = "block";
+    document.getElementById("contact-form").reset();
+    submitted = false;
+  }
+</script>
 </body>
 </html>
