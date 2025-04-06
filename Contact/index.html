@@ -7,10 +7,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Contact | Dawson &amp; Mathis</title>
 <link href="/css/styles.css" rel="stylesheet"/>
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-</head>
+<link href="/Favicon.ico" rel="icon" type="image/png"/></head>
 <body>
-<div class = "wrapper">
+<div class="wrapper">
 <header>
 <h1>Contact Us!</h1>
 <nav>
@@ -24,14 +23,32 @@
 </header>
 <main>
 <h2>Contact Us</h2>
-<form>
-<label for="name">Name:</label><br/>
-<input id="name" name="name" type="text"/><br/>
-<label for="email">Email:</label><br/>
-<input id="email" name="email" type="email"/><br/>
-<label for="message">Message:</label><br/>
-<textarea id="message" name="message"></textarea><br/>
+<form action="https://forms.gle/e135c3eRQ5Y21MFC7" method="POST">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <button class="button" type="submit">Send</button>
+<label for="submission_type">Type of Submission</label>
+<select name="entry.1723733537" required="">
+<option value="General Feedback">General Feedback</option>
+<option value="Legislation Idea">Legislation Idea</option>
+</select>
+<label for="category">Category</label>
+<select name="entry.929700697" required="">
+<option value="Campus Life">Campus Life</option>
+<option value="Campus Recreation">Campus Recreation</option>
+<option value="Residence Life">Residence Life</option>
+<option value="Dining Services">Dining Services</option>
+<option value="Library">Library</option>
+<option value="Counseling">Counseling</option>
+<option value="Other">Other</option>
+</select>
+<label for="description">Detailed Description of Idea or Feedback</label>
+<textarea name="entry.1547865563" placeholder="Your answer" required="" rows="5"></textarea>
+<button type="submit">Submit</button>
 </form>
 </main>
 <footer>
