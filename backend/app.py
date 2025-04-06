@@ -1,32 +1,30 @@
+import os
 import smtplib
 from email.message import EmailMessage
 from flask import Flask, request, jsonify
-import os
 from flask_cors import CORS
-CORS(app)
-
 
 app = Flask(__name__)
-CORS(app)  # Allow cross-origin requests (from dawsonandmathis.com)
+CORS(app)  # Allow frontend to send requests
 
-# Load your email credentials from environment variables
-EMAIL_ADDRESS = os.environ.get("mathisvpcampaign@gmail.com")
-EMAIL_PASSWORD = os.environ.get("lsiv eklw erlu uioi")
+# Load credentials from environment variables
+EMAIL_ADDRESS = os.environ.get("EMAIL_ADDRESS")
+EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 
-@app.route("/submit")
+@app.route("/", methods=["GET"])
 def home():
     return "🎉 Backend is live!"
 
-@app.route("/idea", methods=["POST"])
+@app.route("/submit", methods=["POST"])
 def submit():
     data = request.json
-    print("Received submission:", data)
+    print("📥 Submission received:", data)
 
     if EMAIL_ADDRESS and EMAIL_PASSWORD:
         try:
-            send_email(data)
+            send_email("New Idea Submission", data)
         except Exception as e:
-            print("❌ Email send error:", str(e))
+            print("❌ Email error:", e)
             return jsonify({"status": "error", "message": "Email failed"}), 500
 
     return jsonify({"status": "success", "message": "Thanks for your idea!"})
@@ -34,27 +32,25 @@ def submit():
 @app.route("/contact", methods=["POST"])
 def contact():
     data = request.json
-    print("Contact submission:", data)
-    # Optionally email it, log it, etc.
+    print("📨 Contact submission:", data)
+
+    if EMAIL_ADDRESS and EMAIL_PASSWORD:
+        try:
+            send_email("New Contact Message", data)
+        except Exception as e:
+            print("❌ Email error:", e)
+            return jsonify({"status": "error", "message": "Email failed"}), 500
+
     return jsonify({"status": "success", "message": "Message received!"})
 
-
-def send_email(data):
+def send_email(subject, data):
     msg = EmailMessage()
-    msg["Subject"] = "New Idea Submission"
+    msg["Subject"] = subject
     msg["From"] = EMAIL_ADDRESS
     msg["To"] = EMAIL_ADDRESS
 
-    msg.set_content(f"""
-New Submission from the campaign site:
-
-Submission Type: {data.get("followup")}
-Name: {data.get("name")}
-Email: {data.get("email")}
-Type: {data.get("submission_type")}
-Category: {data.get("category")}
-Description: {data.get("description")}
-    """)
+    body = "\n".join(f"{key.capitalize()}: {value}" for key, value in data.items())
+    msg.set_content(f"{subject}:\n\n{body}")
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
