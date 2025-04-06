@@ -27,18 +27,19 @@
 
 <main>
   <h2>Send Us a Message</h2>
-  <form id="contact-form" onsubmit="return false;">
-    <label for="contact-name">Name</label>
-    <input type="text" id="contact-name" name="name" required placeholder="Your name">
-
-    <label for="contact-email">Email</label>
-    <input type="email" id="contact-email" name="email" required placeholder="you@example.com">
-
-    <label for="contact-message">Message</label>
-    <textarea id="contact-message" name="message" rows="5" required placeholder="Your message..."></textarea>
-
-    <button class="button" type="submit">Send</button>
+  <form action="https://docs.google.com/forms/d/e/YOUR_CONTACT_FORM_ID/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="entry.1234567890" required>
+  
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="entry.2345678901" required>
+  
+    <label for="message">Message *</label>
+    <textarea id="message" name="entry.3456789012" required></textarea>
+  
+    <button type="submit">Submit</button>
   </form>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { alert('Thank you! Your message has been sent.'); }"></iframe>  
 </main>
 
 <footer>
@@ -46,28 +47,6 @@
 </footer>
 </div>
 
-<script>
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const data = {
-    name: document.getElementById("contact-name").value,
-    email: document.getElementById("contact-email").value,
-    message: document.getElementById("contact-message").value
-  };
 
-  fetch("https://campaign-backend-oixn.onrender.com/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.json())
-  .then(data => {
-    alert("✅ Message sent: " + data.message);
-  })
-  .catch(err => {
-    alert("❌ Error sending message: " + err.message);
-  });
-});
-</script>
 </body>
 </html>
