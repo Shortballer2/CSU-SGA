@@ -1,9 +1,7 @@
-// main.js
-
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Dawson & Mathis campaign site loaded.");
 
-  // 📅 Campaign events
+  // 📅 Render campaign events (if calendar exists)
   const events = [
     {
       title: "Campaign Kickoff Rally",
@@ -40,7 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 📨 IDEA FORM submission
+  // 📩 Show a confirmation message
+  function showMessage(target, message, isSuccess = true) {
+    const div = document.createElement("div");
+    div.className = isSuccess ? "form-success" : "form-error";
+    div.textContent = message;
+    target.appendChild(div);
+    setTimeout(() => div.remove(), 5000); // auto-remove after 5s
+  }
+
+  // 📨 Handle IDEA form
   const ideaForm = document.getElementById("idea-form");
   if (ideaForm) {
     ideaForm.addEventListener("submit", async function (e) {
@@ -63,15 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         const result = await response.json();
-        alert("✅ " + result.message);
+        showMessage(ideaForm, "✅ " + result.message, true);
         ideaForm.reset();
       } catch (error) {
-        alert("❌ Error: Failed to send idea.");
+        showMessage(ideaForm, "❌ Error: Failed to send idea.", false);
       }
     });
   }
 
-  // 📩 CONTACT FORM submission
+  // 📬 Handle CONTACT form
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", async function (e) {
@@ -91,10 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         const result = await response.json();
-        alert("✅ " + result.message);
+        showMessage(contactForm, "✅ " + result.message, true);
         contactForm.reset();
       } catch (error) {
-        alert("❌ Error: Failed to send message.");
+        showMessage(contactForm, "❌ Error: Failed to send message.", false);
       }
     });
   }
