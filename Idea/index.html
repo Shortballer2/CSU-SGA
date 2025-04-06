@@ -1,103 +1,100 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Submit Idea</title>
-<link href="/css/styles.css" rel="stylesheet"/>
-<script src="/js/main.js"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="/Favicon.ico" rel="icon" type="image/png"/></head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Idea</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/main.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/Favicon.ico" />
 </head>
 <body>
-<header>
-<h1>Submit Idea</h1>
-<nav>
-<a href="/">Home</a>
-<a href="/About/">About</a>
-<a href="/Events/">Events</a>
-<a href="/Media/">Media</a>
-<a href="/Idea/">Submit Idea</a>
-<a href="/Contact/">Contact</a>
-</nav>
-</header>
-<main>
-<h2>Share your idea or feedback</h2>
-<form 
-  id="idea-form" 
-  action="https://docs.google.com/forms/d/e/1FAIpQLSejWAX8TYGfhxd-qLX_kB1CORdN1eyWxjqjUUq69sjPLE6ndQ/formResponse"
-  method="POST" 
-  target="hidden_iframe" 
-  onsubmit="submitted=true;">
+  <header>
+    <h1>Submit Idea</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/About/">About</a>
+      <a href="/Events/">Events</a>
+      <a href="/Media/">Media</a>
+      <a href="/Idea/">Submit Idea</a>
+      <a href="/Contact/">Contact</a>
+    </nav>
+  </header>
 
-  <label for="followup-choice">Submission Type</label>
-  <select name="entry.1160758752" id="followup-choice" onchange="toggleFollowUpFields()" required>
-    <option value="anonymous">Anonymous</option>
-    <option value="followup">Follow-up</option>
-  </select>
+  <main>
+    <h2>Share your idea or feedback</h2>
+    <form 
+      id="idea-form" 
+      action="https://docs.google.com/forms/d/e/1FAIpQLSejWAX8TYGfhxd-qLX_kB1CORdN1eyWxjqjUUq69sjPLE6ndQ/formResponse" 
+      method="POST" 
+      target="hidden_iframe" 
+      onsubmit="submitted=true;">
 
-  <div id="optional-fields" style="display:none;">
-    <label for="name">Name (optional)</label>
-    <input type="text" id="name" name="entry.1475748754" placeholder="Your name" />
+      <label for="followup-choice">Submission Type</label>
+      <select name="entry.1160758752" id="followup-choice" onchange="toggleFollowUpFields()" required>
+        <option value="anonymous">Anonymous</option>
+        <option value="followup">Follow-up</option>
+      </select>
 
-    <label for="email">Email (optional)</label>
-    <input type="email" id="email" name="entry.467793217" placeholder="you@example.com" />
-  </div>
+      <div id="optional-fields" style="display:none;">
+        <label for="name">Name (optional)</label>
+        <input type="text" id="name" name="entry.1475748754" placeholder="Your name" />
 
-  <label for="submission_type">Type of Submission</label>
-  <select name="entry.1147596798" id="submission_type" required>
-    <option value="General Feedback">General Feedback</option>
-    <option value="Legislation Idea">Legislation Idea</option>
-  </select>
+        <label for="email">Email (optional)</label>
+        <input type="email" id="email" name="entry.467793217" placeholder="you@example.com" />
+      </div>
 
-  <label for="category">Category</label>
-  <select name="entry.1650536476" id="category" required>
-    <option value="Campus Life">Campus Life</option>
-    <option value="Campus Recreation">Campus Recreation</option>
-    <option value="Residence Life">Residence Life</option>
-    <option value="Dining Services">Dining Services</option>
-    <option value="Library">Library</option>
-    <option value="Counseling">Counseling</option>
-    <option value="Other">Other</option>
-  </select>
+      <label for="submission_type">Type of Submission</label>
+      <select name="entry.1147596798" id="submission_type" required>
+        <option value="General Feedback">General Feedback</option>
+        <option value="Legislation Idea">Legislation Idea</option>
+      </select>
 
-  <label for="description">Detailed Description of Idea or Feedback</label>
-  <textarea name="entry.882493903" id="description" rows="5" required placeholder="Your answer"></textarea>
+      <label for="category">Category</label>
+      <select name="entry.1650536476" id="category" required>
+        <option value="Campus Life">Campus Life</option>
+        <option value="Campus Recreation">Campus Recreation</option>
+        <option value="Residence Life">Residence Life</option>
+        <option value="Dining Services">Dining Services</option>
+        <option value="Library">Library</option>
+        <option value="Counseling">Counseling</option>
+        <option value="Other">Other</option>
+      </select>
 
-  <button class="button" type="submit">Submit</button>
-</form>
+      <label for="description">Detailed Description of Idea or Feedback</label>
+      <textarea name="entry.882493903" id="description" rows="5" required placeholder="Your answer"></textarea>
 
-<!-- Hidden iframe to prevent redirect -->
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) showSuccessMessage();"></iframe>
+      <button class="button" type="submit">Submit</button>
+    </form>
 
-<!-- Confirmation Message -->
-<div id="form-success" style="display:none; margin-top: 1rem; color: green; font-weight: bold;">
-  ✅ Your idea has been submitted!
-</div>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) showSuccessMessage();"></iframe>
 
-</main>
-<footer>
-<p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
-</footer>
+    <div id="form-success" style="display:none; margin-top: 1rem; color: green; font-weight: bold;">
+      ✅ Your idea has been submitted!
+    </div>
+  </main>
 
-<script>
-	let submitted = false;
-	
-	function toggleFollowUpFields() {
-	  const choice = document.getElementById("followup-choice").value;
-	  document.getElementById("optional-fields").style.display = (choice === "followup") ? "block" : "none";
-	}
-	
-	function showSuccessMessage() {
-	  document.getElementById("form-success").style.display = "block";
-	  document.getElementById("idea-form").reset();
-	  document.getElementById("optional-fields").style.display = "none";
-	  submitted = false;
-	}
-	</script>
-	
+  <footer>
+    <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let submitted = false;
+
+    function toggleFollowUpFields() {
+      const choice = document.getElementById("followup-choice").value;
+      document.getElementById("optional-fields").style.display = (choice === "followup") ? "block" : "none";
+    }
+
+    function showSuccessMessage() {
+      document.getElementById("form-success").style.display = "block";
+      document.getElementById("idea-form").reset();
+      document.getElementById("optional-fields").style.display = "none";
+      submitted = false;
+    }
+  </script>
 </body>
 </html>
