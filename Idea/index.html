@@ -26,78 +26,78 @@
 </header>
 <main>
 <h2>Share your idea or feedback</h2>
-<form id="idea-form" action="" onsubmit="return false;">
-<label for="followup-choice">Submission Type</label>
-<select name="followup" id="followup-choice" onchange="toggleFollowUpFields()" required>
-<option value="anonymous">Anonymous</option>
-<option value="followup">Follow-up</option>
-</select>
+<form 
+  id="idea-form" 
+  action="https://forms.gle/pS7npW9nVwNTEsna8" 
+  method="POST" 
+  target="hidden_iframe" 
+  onsubmit="submitted=true;">
 
-<div id="optional-fields" style="display:none;">
-<label for="name">Name (optional)</label>
-<input type="text" id="name" name="name" placeholder="Your name">
+  <label for="followup-choice">Submission Type</label>
+  <select name="entry.1160758752" id="followup-choice" onchange="toggleFollowUpFields()" required>
+    <option value="anonymous">Anonymous</option>
+    <option value="followup">Follow-up</option>
+  </select>
 
-<label for="email">Email (optional)</label>
-<input type="email" id="email" name="email" placeholder="you@example.com">
+  <div id="optional-fields" style="display:none;">
+    <label for="name">Name (optional)</label>
+    <input type="text" id="name" name="entry.1475748754" placeholder="Your name" />
+
+    <label for="email">Email (optional)</label>
+    <input type="email" id="email" name="entry.467793217" placeholder="you@example.com" />
+  </div>
+
+  <label for="submission_type">Type of Submission</label>
+  <select name="entry.1147596798" id="submission_type" required>
+    <option value="General Feedback">General Feedback</option>
+    <option value="Legislation Idea">Legislation Idea</option>
+  </select>
+
+  <label for="category">Category</label>
+  <select name="entry.1650536476" id="category" required>
+    <option value="Campus Life">Campus Life</option>
+    <option value="Campus Recreation">Campus Recreation</option>
+    <option value="Residence Life">Residence Life</option>
+    <option value="Dining Services">Dining Services</option>
+    <option value="Library">Library</option>
+    <option value="Counseling">Counseling</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <label for="description">Detailed Description of Idea or Feedback</label>
+  <textarea name="entry.882493903" id="description" rows="5" required placeholder="Your answer"></textarea>
+
+  <button class="button" type="submit">Submit</button>
+</form>
+
+<!-- Hidden iframe to prevent redirect -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) showSuccessMessage();"></iframe>
+
+<!-- Confirmation Message -->
+<div id="form-success" style="display:none; margin-top: 1rem; color: green; font-weight: bold;">
+  ✅ Your idea has been submitted!
 </div>
 
-<label for="submission_type">Type of Submission</label>
-<select name="submission_type" required>
-<option value="General Feedback">General Feedback</option>
-<option value="Legislation Idea">Legislation Idea</option>
-</select>
-
-<label for="category">Category</label>
-<select name="category" required>
-<option value="Campus Life">Campus Life</option>
-<option value="Campus Recreation">Campus Recreation</option>
-<option value="Residence Life">Residence Life</option>
-<option value="Dining Services">Dining Services</option>
-<option value="Library">Library</option>
-<option value="Counseling">Counseling</option>
-<option value="Other">Other</option>
-</select>
-
-<label for="description">Detailed Description of Idea or Feedback</label>
-<textarea name="description" rows="5" required placeholder="Your answer"></textarea>
-
-<button class="button" type="submit">Submit</button>
-</form>
 </main>
 <footer>
 <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
 </footer>
 
 <script>
-document.getElementById("idea-form").addEventListener("submit", function (e) {
-e.preventDefault();
-const data = {
-followup: document.getElementById("followup-choice").value,
-name: document.getElementById("name")?.value || "",
-email: document.getElementById("email")?.value || "",
-submission_type: document.querySelector("select[name='submission_type']").value,
-category: document.querySelector("select[name='category']").value,
-description: document.querySelector("textarea[name='description']").value
-};
-
-fetch("https://campaign-backend-oixn.onrender.com/", {
-method: "POST",
-headers: { "Content-Type": "application/json" },
-body: JSON.stringify(data)
-})
-.then(res => res.json())
-.then(data => {
-alert("✅ Submitted: " + data.message);
-})
-.catch(err => {
-alert("❌ Error: " + err.message);
-});
-});
-
-function toggleFollowUpFields() {
-const choice = document.getElementById("followup-choice").value;
-document.getElementById("optional-fields").style.display = (choice === "followup") ? "block" : "none";
-}
-</script>
+	let submitted = false;
+	
+	function toggleFollowUpFields() {
+	  const choice = document.getElementById("followup-choice").value;
+	  document.getElementById("optional-fields").style.display = (choice === "followup") ? "block" : "none";
+	}
+	
+	function showSuccessMessage() {
+	  document.getElementById("form-success").style.display = "block";
+	  document.getElementById("idea-form").reset();
+	  document.getElementById("optional-fields").style.display = "none";
+	  submitted = false;
+	}
+	</script>
+	
 </body>
 </html>
