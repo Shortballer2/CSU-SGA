@@ -1,93 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Submit Idea</title>
+  <title>Contact Us</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-  <header>
-    <h1>Submit Idea</h1>
-    <nav>
-      <a href="../index.html">Home</a>
-    </nav>
-  </header>
-  <main>
-    <h2>Share your idea or feedback</h2>
-    <form id="idea-form" action="" onsubmit="return false;">
-      <label for="followup-choice">Submission Type</label>
-      <select name="followup" id="followup-choice" onchange="toggleFollowUpFields()" required>
-        <option value="anonymous">Anonymous</option>
-        <option value="followup">Follow-up</option>
-      </select>
+  <div class="wrapper">
+    <header>
+      <h1>Contact Us</h1>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="../About/index.html">About</a>
+        <a href="../Events/index.html">Events</a>
+        <a href="../Idea/index.html">Submit Idea</a>
+        <a href="../Media/index.html">Media</a>
+        <a href="../Contact/index.html">Contact</a>
+      </nav>
+    </header>
 
-      <div id="optional-fields" style="display:none;">
-        <label for="name">Name (optional)</label>
-        <input type="text" id="name" name="name" placeholder="Your name">
+    <main>
+      <h2>Send Us a Message</h2>
+      <form id="contact-form" onsubmit="return false;">
+        <label for="contact-name">Name</label>
+        <input type="text" id="contact-name" name="name" required placeholder="Your name">
 
-        <label for="email">Email (optional)</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com">
-      </div>
+        <label for="contact-email">Email</label>
+        <input type="email" id="contact-email" name="email" required placeholder="you@example.com">
 
-      <label for="submission_type">Type of Submission</label>
-      <select name="submission_type" required>
-        <option value="General Feedback">General Feedback</option>
-        <option value="Legislation Idea">Legislation Idea</option>
-      </select>
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" rows="5" required placeholder="Your message..."></textarea>
 
-      <label for="category">Category</label>
-      <select name="category" required>
-        <option value="Campus Life">Campus Life</option>
-        <option value="Campus Recreation">Campus Recreation</option>
-        <option value="Residence Life">Residence Life</option>
-        <option value="Dining Services">Dining Services</option>
-        <option value="Library">Library</option>
-        <option value="Counseling">Counseling</option>
-        <option value="Other">Other</option>
-      </select>
+        <button class="button" type="submit">Send</button>
+      </form>
+    </main>
 
-      <label for="description">Detailed Description of Idea or Feedback</label>
-      <textarea name="description" rows="5" required placeholder="Your answer"></textarea>
-
-      <button class="button" type="submit">Submit</button>
-    </form>
-  </main>
-  <footer>
-    <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
-  </footer>
+    <footer>
+      <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
+    </footer>
+  </div>
 
   <script>
-  document.getElementById("idea-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const data = {
-      followup: document.getElementById("followup-choice").value,
-      name: document.getElementById("name")?.value || "",
-      email: document.getElementById("email")?.value || "",
-      submission_type: document.querySelector("select[name='submission_type']").value,
-      category: document.querySelector("select[name='category']").value,
-      description: document.querySelector("textarea[name='description']").value
-    };
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const data = {
+        name: document.getElementById("contact-name").value,
+        email: document.getElementById("contact-email").value,
+        message: document.getElementById("contact-message").value
+      };
 
-    fetch("https://campaign-backend-oixn.onrender.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(data => {
-      alert("✅ Submitted: " + data.message);
-    })
-    .catch(err => {
-      alert("❌ Error: " + err.message);
+      fetch("https://campaign-backend-oixn.onrender.com/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("✅ Message sent: " + data.message);
+      })
+      .catch(err => {
+        alert("❌ Error sending message: " + err.message);
+      });
     });
-  });
-
-  function toggleFollowUpFields() {
-    const choice = document.getElementById("followup-choice").value;
-    document.getElementById("optional-fields").style.display = (choice === "followup") ? "block" : "none";
-  }
   </script>
 </body>
 </html>
