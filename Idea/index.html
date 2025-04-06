@@ -23,33 +23,9 @@
 </header>
 <main>
 <h2>Submit an Idea</h2>
-<form action="https://forms.gle/e135c3eRQ5Y21MFC7" method="POST">
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<form action="" id="idea-form" method="POST" onsubmit="return false;"><input id="idea-input" name="idea" placeholder="Your idea here" required="True" type="text"/>
 <button class="button" type="submit">Submit</button>
-<label for="submission_type">Type of Submission</label>
-<select name="entry.1723733537" required="">
-<option value="General Feedback">General Feedback</option>
-<option value="Legislation Idea">Legislation Idea</option>
-</select>
-<label for="category">Category</label>
-<select name="entry.929700697" required="">
-<option value="Campus Life">Campus Life</option>
-<option value="Campus Recreation">Campus Recreation</option>
-<option value="Residence Life">Residence Life</option>
-<option value="Dining Services">Dining Services</option>
-<option value="Library">Library</option>
-<option value="Counseling">Counseling</option>
-<option value="Other">Other</option>
-</select>
-<label for="description">Detailed Description of Idea or Feedback</label>
-<textarea name="entry.1547865563" placeholder="Your answer" required="" rows="5"></textarea>
+<button type="submit">Submit</button>
 <button type="submit">Submit</button>
 </form>
 </main>
@@ -57,5 +33,22 @@
 <p>© 2025 Dawson &amp; Mathis Campaign. All rights reserved.</p>
 </footer>
 </div>
-</body>
+<script>
+document.getElementById("idea-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const idea = document.getElementById("idea-input").value;
+  fetch("https://campaign-backend-oixn.onrender.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ idea: idea })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert("✅ Submitted: " + data.message);
+  })
+  .catch(err => {
+    alert("❌ Error: " + err.message);
+  });
+});
+</script></body>
 </html>
