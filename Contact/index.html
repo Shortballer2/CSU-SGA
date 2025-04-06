@@ -55,7 +55,7 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
     message: document.getElementById("contact-message").value
   };
 
-  fetch("https://campaign-backend-oixn.onrender.com/contact", {
+  fetch("https://campaign-backend-oixn.onrender.com/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)

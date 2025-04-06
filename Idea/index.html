@@ -80,7 +80,7 @@ category: document.querySelector("select[name='category']").value,
 description: document.querySelector("textarea[name='description']").value
 };
 
-fetch("https://campaign-backend-oixn.onrender.com/submit", {
+fetch("https://campaign-backend-oixn.onrender.com/", {
 method: "POST",
 headers: { "Content-Type": "application/json" },
 body: JSON.stringify(data)
