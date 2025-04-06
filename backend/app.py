@@ -1,8 +1,10 @@
 import smtplib
 from email.message import EmailMessage
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 import os
+from flask_cors import CORS
+CORS(app)
+
 
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests (from dawsonandmathis.com)
