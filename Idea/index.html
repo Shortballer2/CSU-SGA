@@ -23,7 +23,7 @@
 </header>
 <main>
 <h2>Submit an Idea</h2>
-<form action="https://forms.gle/e135c3eRQ5Y21MFC7" method="POST">
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScAoqY99pbYhwYHv62WlGu19iYuRfv08jvYkQsSkYN_fip5uA/formResponse" method="POST">
 <br/>
 <br/>
 <br/>
@@ -33,13 +33,32 @@
 <br/>
 <br/>
 <button class="button" type="submit">Submit</button>
+
+
+
+
+
+
+<button type="submit">Submit</button>
+
+<label for="followup-choice">Submission Type</label>
+<select id="followup-choice" name="followup" onchange="toggleFollowUpFields()" required="">
+<option value="anonymous">Anonymous</option>
+<option value="followup">Follow-up</option>
+</select>
+<div id="optional-fields" style="display:none;">
+<label for="name">Name (optional)</label>
+<input id="name" name="entry.342980759" placeholder="Your name" type="text"/>
+<label for="email">Email (optional)</label>
+<input id="email" name="entry.1636139688" placeholder="you@example.com" type="email"/>
+</div>
 <label for="submission_type">Type of Submission</label>
-<select name="entry.1723733537" required="">
+<select name="entry.1452154949" required="">
 <option value="General Feedback">General Feedback</option>
 <option value="Legislation Idea">Legislation Idea</option>
 </select>
 <label for="category">Category</label>
-<select name="entry.929700697" required="">
+<select name="entry.925057131" required="">
 <option value="Campus Life">Campus Life</option>
 <option value="Campus Recreation">Campus Recreation</option>
 <option value="Residence Life">Residence Life</option>
@@ -49,8 +68,15 @@
 <option value="Other">Other</option>
 </select>
 <label for="description">Detailed Description of Idea or Feedback</label>
-<textarea name="entry.1547865563" placeholder="Your answer" required="" rows="5"></textarea>
+<textarea name="entry.1378271277" placeholder="Your answer" required="" rows="5"></textarea>
 <button type="submit">Submit</button>
+<script>
+        function toggleFollowUpFields() {
+          const followUpChoice = document.getElementById("followup-choice").value;
+          const optionalFields = document.getElementById("optional-fields");
+          optionalFields.style.display = followUpChoice === "followup" ? "block" : "none";
+        }
+        </script>
 </form>
 </main>
 <footer>
