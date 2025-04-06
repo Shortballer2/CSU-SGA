@@ -1,29 +1,84 @@
-<!-- about.html -->
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About | Dawson &amp; Mathis</title>
-<link href="/css/styles.css" rel="stylesheet"/>
-<link href="/Favicon.ico" rel="icon" type="image/png"/></head>
-<div class="wrapper">
-<body><div class="wrapper">
-<header>
-<h1>Get to Know Hannah and Shane</h1>
-<nav>
-<a href="/">Home</a>
-<a href="/About/">About</a>
-<a href="/Events/">Events</a>
-<a href="/Idea/">Submit Idea</a>
-<a href="/Media/">Media</a>
-<a href="/Contact/">Contact</a>
-</nav>
-</header>
-<main><h2>Meet the Candidates</h2><div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 2rem;"><div style="max-width: 300px; text-align: center;"><img alt="Hannah Dawson" src="/HannahDawson.png" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/><h3>Hannah Dawson</h3><p>Running for Student Body President. Passionate about student advocacy, campus life, and community building.</p></div><div style="max-width: 300px; text-align: center;"><img alt="Shane Mathis" src="/ShaneMathis.png" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/><h3>Shane Mathis</h3><p>Running for Student Body Vice President. Focused on making your voice heard and improving student resources.</p></div></div></main>
-<footer>
-<p>© 2025 Dawson &amp; Mathis Campaign. All rights reserved.</p>
-</footer>
-</div></body></div>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Dawson & Mathis</title>
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" type="image/png" href="../Favicon.ico" />
+
+  <style>
+    .candidate-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .candidate {
+      flex: 1 1 300px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .candidate img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .candidate iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Get to Know Hannah and Shane</h1>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="../About/index.html">About</a>
+        <a href="../Events/index.html">Events</a>
+        <a href="../Idea/index.html">Submit Idea</a>
+        <a href="../Media/index.html">Media</a>
+        <a href="../Contact/index.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Meet the Candidates</h2>
+
+      <div class="candidate-container">
+        <!-- Hannah -->
+        <div class="candidate">
+          <img src="../HannahDawson.png" alt="Hannah Dawson" />
+          <h3>Hannah Dawson</h3>
+          <iframe 
+            src="https://docs.google.com/document/d/e/2PACX-1vTK5e-z2PGLvwDy3nIP6BgUFv0kO8Dh9i72Y6BhD8v_7KpcQPhgMwB6CUoorY4-FA7uO4C-b1UA3vXZ/pub?embedded=true">
+          </iframe>
+        </div>
+
+        <!-- Shane -->
+        <div class="candidate">
+          <img src="../ShaneMathis.png" alt="Shane Mathis" />
+          <h3>Shane Mathis</h3>
+          <iframe 
+            src="https://docs.google.com/document/d/e/2PACX-1vQOxpTsYyK-AojDV_v5q85MMSza2ZY8RGFNopDmccuWam2vbookr8nQkAZQkDcSmSxC79yLsQSuJGED/pub?embedded=true">
+          </iframe>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
 </html>

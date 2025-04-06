@@ -1,8 +1,15 @@
 import smtplib
 from email.message import EmailMessage
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+import os
 
 app = Flask(__name__)
+CORS(app)  # Allow cross-origin requests (from dawsonandmathis.com)
+
+# Load your email credentials from environment variables
+EMAIL_ADDRESS = os.environ.get("mathisvpcampaign@gmail.com")
+EMAIL_PASSWORD = os.environ.get("lsiv eklw erlu uioi")
 
 @app.route("/")
 def home():
@@ -12,19 +19,21 @@ def home():
 def submit():
     data = request.json
     print("Received submission:", data)
+
+    if EMAIL_ADDRESS and EMAIL_PASSWORD:
+        try:
+            send_email(data)
+        except Exception as e:
+            print("❌ Email send error:", str(e))
+            return jsonify({"status": "error", "message": "Email failed"}), 500
+
     return jsonify({"status": "success", "message": "Thanks for your idea!"})
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
-
-EMAIL_ADDRESS = "mathisvpcampaign@gmail.com"   # Your Gmail address
-EMAIL_PASSWORD = "edvo oaun kzsn bnsg"       # App password from above
 
 def send_email(data):
     msg = EmailMessage()
     msg["Subject"] = "New Idea Submission"
     msg["From"] = EMAIL_ADDRESS
-    msg["To"] = EMAIL_ADDRESS  # You can send to the same account
+    msg["To"] = EMAIL_ADDRESS
 
     msg.set_content(f"""
 New Submission from the campaign site:
@@ -40,3 +49,6 @@ Description: {data.get("description")}
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.send_message(msg)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
