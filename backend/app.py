@@ -17,7 +17,7 @@ def submit():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 
-EMAIL_ADDRESS = "contact@dawsonandmathis.com"   # Your Gmail address
+EMAIL_ADDRESS = "mathisvpcampaign@gmail.com"   # Your Gmail address
 EMAIL_PASSWORD = "edvo oaun kzsn bnsg"       # App password from above
 
 def send_email(data):
