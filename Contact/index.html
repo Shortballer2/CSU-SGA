@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us</title>
-  <link href="/css/styles.css" rel="stylesheet"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact Us</title>
+<link href="/css/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <h1>Contact Us</h1>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/About/">About</a>
-        <a href="/Events/">Events</a>
-        <a href="/Idea/">Submit Idea</a>
-        <a href="/Media/">Media</a>
-        <a href="/Contact/">Contact</a>
-      </nav>
-    </header>
+<div class="wrapper">
+<header>
+<h1>Contact Us</h1>
+<nav>
+  <a href="/">Home</a>
+  <a href="/About/">About</a>
+  <a href="/Events/">Events</a>
+  <a href="/Idea/">Submit Idea</a>
+  <a href="/Media/">Media</a>
+  <a href="/Contact/">Contact</a>
+</nav>
+</header>
 
-    <main>
-      <h2>Send Us a Message</h2>
-      <form id="contact-form" onsubmit="return false;">
-        <label for="contact-name">Name</label>
-        <input type="text" id="contact-name" name="name" required placeholder="Your name">
+<main>
+  <h2>Send Us a Message</h2>
+  <form id="contact-form" onsubmit="return false;">
+    <label for="contact-name">Name</label>
+    <input type="text" id="contact-name" name="name" required placeholder="Your name">
 
-        <label for="contact-email">Email</label>
-        <input type="email" id="contact-email" name="email" required placeholder="you@example.com">
+    <label for="contact-email">Email</label>
+    <input type="email" id="contact-email" name="email" required placeholder="you@example.com">
 
-        <label for="contact-message">Message</label>
-        <textarea id="contact-message" name="message" rows="5" required placeholder="Your message..."></textarea>
+    <label for="contact-message">Message</label>
+    <textarea id="contact-message" name="message" rows="5" required placeholder="Your message..."></textarea>
 
-        <button class="button" type="submit">Send</button>
-      </form>
-    </main>
+    <button class="button" type="submit">Send</button>
+  </form>
+</main>
 
-    <footer>
-      <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
-    </footer>
-  </div>
+<footer>
+  <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
+</footer>
+</div>
 
-  <script>
-    document.getElementById("contact-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const data = {
-        name: document.getElementById("contact-name").value,
-        email: document.getElementById("contact-email").value,
-        message: document.getElementById("contact-message").value
-      };
+<script>
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById("contact-name").value,
+    email: document.getElementById("contact-email").value,
+    message: document.getElementById("contact-message").value
+  };
 
-      fetch("https://campaign-backend-oixn.onrender.com/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-      .then(res => res.json())
-      .then(data => {
-        alert("✅ Message sent: " + data.message);
-      })
-      .catch(err => {
-        alert("❌ Error sending message: " + err.message);
-      });
-    });
-  </script>
+  fetch("https://campaign-backend-oixn.onrender.com/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert("✅ Message sent: " + data.message);
+  })
+  .catch(err => {
+    alert("❌ Error sending message: " + err.message);
+  });
+});
+</script>
 </body>
 </html>
