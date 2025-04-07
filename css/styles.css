@@ -8,13 +8,26 @@ html, body {
 }
 
 .wrapper {
-  flex: 1;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 main {
   flex: 1;
+  padding: 2rem;
+}
+
+.button {
+  display: inline-block;
+  margin: 1rem 0.5rem; /* adds vertical and horizontal space between buttons */
+}
+
+footer {
+  background-color: var(--primary);
+  color: var(--light);
+  padding: 1rem;
+  text-align: center;
 }
 
 /* styles.css */
