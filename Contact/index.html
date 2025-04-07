@@ -1,72 +1,50 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Contact Us</title>
-<link href="/css/styles.css" rel="stylesheet"/>
-<script src="/js/main.js"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="/Favicon.ico" rel="icon" type="image/png"/></head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <style>
+    body { font-family: Poppins, sans-serif; background: #f4f4f4; padding: 2rem; }
+    label { display: block; margin-top: 1rem; }
+    input, textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; }
+    .button { margin-top: 1rem; background: #1B2CC1; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; }
+    #form-success { margin-top: 1rem; color: green; font-weight: bold; display: none; }
+  </style>
 </head>
 <body>
-<div class="wrapper">
-<header>
-<h1>Contact Us</h1>
-<nav>
-  <a href="/">Home</a>
-  <a href="/About/">About</a>
-  <a href="/Events/">Events</a>
-  <a href="/Media/">Media</a>
-  <a href="/Idea/">Submit Idea</a>
-  <a href="/Contact/">Contact</a>
-</nav>
-</header>
+  <h2>Contact Us</h2>
+  <form 
+    id="contact-form" 
+    action="https://docs.google.com/forms/d/e/1FAIpQLSdPR44L2zm9gNcgsbrSk6BopvvzTfDRZ5f-EfHgiZpyTxCt2w/formResponse" 
+    method="POST" 
+    target="hidden_iframe" 
+    onsubmit="submitted=true;">
 
-<main>
-  <h2>Send Us a Message</h2>
-  <form
-  id="contact-form"
-  action="https://docs.google.com/forms/d/e/1FAIpQLScE_YsCAeEKLAZHlhfnuzk7KqKBpEwfqt0bPkY13gwfv70VaQ/formResponse"
-  method="POST"
-  target="hidden_iframe"
-  onsubmit="submitted=true;">
-  
-  <label for="name">Name *</label>
-  <input type="text" id="name" name="entry.1832206281" required>
-  
-  <label for="email">Email *</label>
-  <input type="email" id="email" name="entry.249345091" required>
-  
-  <label for="message">Message *</label>
-  <textarea id="message" name="entry.146502396" rows="5" required></textarea>
-  
-  <button type="submit">Submit</button>
-</form>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="entry.1832206281" placeholder="Your name" required />
 
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccessMessage(); }"></iframe>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="entry.249345091" placeholder="you@example.com" required />
 
-<div id="form-success" style="display:none; margin-top: 1rem; color: green; font-weight: bold;">
-  ✅ Your message has been sent!
-</div>
+    <label for="message">Message</label>
+    <textarea id="message" name="entry.146502396" rows="5" required placeholder="Type your message..."></textarea>
 
-</main>
+    <button class="button" type="submit">Send Message</button>
+  </form>
 
-<footer>
-  <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
-</footer>
-</div>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) showSuccessMessage();"></iframe>
 
-<script>
-  let submitted = false;
-  
-  function showSuccessMessage() {
-    document.getElementById("form-success").style.display = "block";
-    document.getElementById("contact-form").reset();
-    submitted = false;
-  }
-</script>
+  <div id="form-success">✅ Your message has been sent!</div>
+
+  <script>
+    let submitted = false;
+    function showSuccessMessage() {
+      document.getElementById("form-success").style.display = "block";
+      document.getElementById("contact-form").reset();
+      submitted = false;
+    }
+  </script>
 </body>
 </html>
