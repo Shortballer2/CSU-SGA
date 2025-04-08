@@ -239,8 +239,8 @@ iframe {
   }
 
   .candidate iframe {
-    width: 100%;
-    height: 250px; /* shorter height */
+    width: 130%;
+    height: 150px; /* shorter height */
     border: none;
     margin-top: 1rem;
     border-radius: 8px;
