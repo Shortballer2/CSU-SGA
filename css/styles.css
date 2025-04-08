@@ -1,4 +1,3 @@
-
 html, body {
   height: 100%;
   margin: 0;
@@ -170,6 +169,10 @@ iframe {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   flex: 1 1 500px;
   max-width: 550px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  display: none;
 }
 
 .social-column {
@@ -210,6 +213,17 @@ iframe {
   border: none;
   margin-top: 1rem;
   border-radius: 8px;
+}
+
+.candidate.show {
+  display: flex !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.candidate.hide {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 @media (max-width: 768px) {
