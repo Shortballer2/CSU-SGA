@@ -55,9 +55,17 @@
 
     <main>
       <h2>Meet the Candidates</h2>
+    
+      <!-- Toggle Buttons -->
+      <div style="margin-bottom: 1rem;">
+        <button class="button" onclick="showCandidate('hannah')">Hannah</button>
+        <button class="button" onclick="showCandidate('shane')">Shane</button>
+      </div>
+    
       <div class="candidate-container">
+    
         <!-- Hannah -->
-        <div class="candidate">
+        <div class="candidate" id="candidate-hannah">
           <div class="social-column">
             <a href="https://www.instagram.com/hannahdawsonforprez">
               <img src="../Hannah Dawson Instagram Logo.png" alt="Hannah Instagram" />
@@ -69,9 +77,9 @@
             <iframe src="https://docs.google.com/document/d/e/2PACX-1vTK5e-z2PGLvwDy3nIP6BgUFv0kO8Dh9i72Y6BhD8v_7KpcQPhgMwB6CUoorY4-FA7uO4C-b1UA3vXZ/pub?embedded=true"></iframe>
           </div>
         </div>
-
+    
         <!-- Shane -->
-        <div class="candidate">
+        <div class="candidate" id="candidate-shane" style="display: none;">
           <div class="social-column">
             <a href="https://www.instagram.com/shaneforvicepresident">
               <img src="../Shane Mathis Instagram Logo.png" alt="Shane Instagram" />
@@ -89,8 +97,9 @@
             <iframe src="https://docs.google.com/document/d/e/2PACX-1vQOxpTsYyK-AojDV_v5q85MMSza2ZY8RGFNopDmccuWam2vbookr8nQkAZQkDcSmSxC79yLsQSuJGED/pub?embedded=true"></iframe>
           </div>
         </div>
+    
       </div>
-    </main>
+    </main>    
 
     <footer>
       <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
