@@ -24,13 +24,12 @@
 }
 
 .candidate {
-  display: flex; /* ← This is what enables side-by-side layout */
-  gap: 1rem;
-  flex: 1 1 300px;
-  max-width: 600px;
-  text-align: left;
-  align-items: flex-start;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+
 
 .social-column {
   display: flex;
@@ -77,49 +76,47 @@
     </header>
 
     <main>
-      <h2>Meet the Candidates</h2>
-      <div class="candidate-container">
-        <div class="candidate">
-          <div class="social-column">
-            <a href="https://www.instagram.com/hannahdawsonforprez">
-              <img src="../Hannah Dawson Instagram Logo.png" alt="Hannah Instagram Logo" />
-            </a>
-          </div>
-          <div>
-            <img src="../HannahDawson.png" alt="Hannah Dawson" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);" />
-            <h3>Hannah Dawson</h3>
-            <iframe 
-              src="https://docs.google.com/document/d/e/2PACX-1vTK5e-z2PGLvwDy3nIP6BgUFv0kO8Dh9i72Y6BhD8v_7KpcQPhgMwB6CUoorY4-FA7uO4C-b1UA3vXZ/pub?embedded=true">
-            </iframe>
-          </div>
-        </div>
-      </div>
-        
-
-        <!-- Shane -->
+      <main>
+        <h2>Meet the Candidates</h2>
         <div class="candidate-container">
-        <div class="candidate">
-          <div class="social-column">
-            <a href="https://www.instagram.com/shaneforvicepresident">
-              <img src="../Shane Mathis Instagram Logo.png" alt="Shane Instagram Logo" />
-            </a>
-            <a href="https://www.tiktok.com/@shaneforvicepresident">
-              <img src="../Shane Mathis TikTok Logo.png" alt="Shane TikTok Logo" />
-            </a>
-            <a href="https://www.youtube.com/@shaneforvp">
-              <img src="../Shane Mathis YouTube Logo.png" alt="Shane YouTube Logo" />
-            </a>
+      
+          <!-- Hannah -->
+          <div class="candidate">
+            <div class="social-column">
+              <a href="https://www.instagram.com/hannahdawsonforprez">
+                <img src="../Hannah Dawson Instagram Logo.png" alt="Hannah Instagram Logo" />
+              </a>
+            </div>
+            <div>
+              <img src="../HannahDawson.png" alt="Hannah Dawson" />
+              <h3>Hannah Dawson</h3>
+              <iframe src="https://docs.google.com/document/d/e/2PACX-1vTK5e-z2PGLvwDy3nIP6BgUFv0kO8Dh9i72Y6BhD8v_7KpcQPhgMwB6CUoorY4-FA7uO4C-b1UA3vXZ/pub?embedded=true"></iframe>
+            </div>
           </div>
-        
-          <div>
-            <img src="../ShaneMathis.png" alt="Shane Mathis" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);" />
-            <h3>Shane Mathis</h3>
-            <iframe 
-              src="https://docs.google.com/document/d/e/2PACX-1vQOxpTsYyK-AojDV_v5q85MMSza2ZY8RGFNopDmccuWam2vbookr8nQkAZQkDcSmSxC79yLsQSuJGED/pub?embedded=true">
-            </iframe>
+      
+          <!-- Shane -->
+          <div class="candidate">
+            <div class="social-column">
+              <a href="https://www.instagram.com/shaneforvicepresident">
+                <img src="../Shane Mathis Instagram Logo.png" alt="Shane Instagram Logo" />
+              </a>
+              <a href="https://www.tiktok.com/@shaneforvicepresident">
+                <img src="../Shane Mathis TikTok Logo.png" alt="Shane TikTok Logo" />
+              </a>
+              <a href="https://www.youtube.com/@shaneforvp">
+                <img src="../Shane Mathis YouTube Logo.png" alt="Shane YouTube Logo" />
+              </a>
+            </div>
+            <div>
+              <img src="../ShaneMathis.png" alt="Shane Mathis" />
+              <h3>Shane Mathis</h3>
+              <iframe src="https://docs.google.com/document/d/e/2PACX-1vQOxpTsYyK-AojDV_v5q85MMSza2ZY8RGFNopDmccuWam2vbookr8nQkAZQkDcSmSxC79yLsQSuJGED/pub?embedded=true"></iframe>
+            </div>
           </div>
-        </div>
-      </div>
+      
+        </div> <!-- Close single .candidate-container -->
+      </main>
+      
     </main>
 
     <footer>
