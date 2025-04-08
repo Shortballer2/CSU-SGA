@@ -208,3 +208,8 @@ iframe {
   margin-top: 0.5rem;
   text-align: center;
 }
+
+.candidate-content {
+  flex: 1;
+  min-width: 0;
+}
