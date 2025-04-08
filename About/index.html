@@ -8,56 +8,59 @@
   <link href="/css/styles.css" rel="stylesheet"/>
   <script src="/js/main.js"></script>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
-  <link href="/Favicon.ico" rel="icon" type="image/png"/></head>
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="/Favicon.ico" rel="icon" type="image/png"/>
 
   <style>
-.candidate-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
+    .candidate-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-.candidate {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
+    .candidate {
+      display: flex;
+      gap: 1rem;
+      flex: 1 1 500px;
+      background-color: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      align-items: flex-start;
+    }
 
+    .social-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
 
-.social-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
+    .social-column img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
 
-.social-column img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
-}
+    .candidate iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      margin-top: 1rem;
+    }
 
-.candidate iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
-  margin-top: 1rem;
-}
-
-.candidate img:first-of-type {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
+    .candidate img:first-of-type {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
   </style>
 </head>
 
@@ -76,47 +79,44 @@
     </header>
 
     <main>
-      <main>
-        <h2>Meet the Candidates</h2>
-        <div class="candidate-container">
-      
-          <!-- Hannah -->
-          <div class="candidate">
-            <div class="social-column">
-              <a href="https://www.instagram.com/hannahdawsonforprez">
-                <img src="../Hannah Dawson Instagram Logo.png" alt="Hannah Instagram Logo" />
-              </a>
-            </div>
-            <div>
-              <img src="../HannahDawson.png" alt="Hannah Dawson" />
-              <h3>Hannah Dawson</h3>
-              <iframe src="https://docs.google.com/document/d/e/2PACX-1vTK5e-z2PGLvwDy3nIP6BgUFv0kO8Dh9i72Y6BhD8v_7KpcQPhgMwB6CUoorY4-FA7uO4C-b1UA3vXZ/pub?embedded=true"></iframe>
-            </div>
+      <h2>Meet the Candidates</h2>
+      <div class="candidate-container">
+
+        <!-- Hannah -->
+        <div class="candidate">
+          <div class="social-column">
+            <a href="https://www.instagram.com/hannahdawsonforprez">
+              <img src="../Hannah Dawson Instagram Logo.png" alt="Hannah Instagram Logo" />
+            </a>
           </div>
-      
-          <!-- Shane -->
-          <div class="candidate">
-            <div class="social-column">
-              <a href="https://www.instagram.com/shaneforvicepresident">
-                <img src="../Shane Mathis Instagram Logo.png" alt="Shane Instagram Logo" />
-              </a>
-              <a href="https://www.tiktok.com/@shaneforvicepresident">
-                <img src="../Shane Mathis TikTok Logo.png" alt="Shane TikTok Logo" />
-              </a>
-              <a href="https://www.youtube.com/@shaneforvp">
-                <img src="../Shane Mathis YouTube Logo.png" alt="Shane YouTube Logo" />
-              </a>
-            </div>
-            <div>
-              <img src="../ShaneMathis.png" alt="Shane Mathis" />
-              <h3>Shane Mathis</h3>
-              <iframe src="https://docs.google.com/document/d/e/2PACX-1vQOxpTsYyK-AojDV_v5q85MMSza2ZY8RGFNopDmccuWam2vbookr8nQkAZQkDcSmSxC79yLsQSuJGED/pub?embedded=true"></iframe>
-            </div>
+          <div>
+            <img src="../HannahDawson.png" alt="Hannah Dawson" />
+            <h3>Hannah Dawson</h3>
+            <iframe src="https://docs.google.com/document/d/e/2PACX-1vTK5e-z2PGLvwDy3nIP6BgUFv0kO8Dh9i72Y6BhD8v_7KpcQPhgMwB6CUoorY4-FA7uO4C-b1UA3vXZ/pub?embedded=true"></iframe>
           </div>
-      
-        </div> <!-- Close single .candidate-container -->
-      </main>
-      
+        </div>
+
+        <!-- Shane -->
+        <div class="candidate">
+          <div class="social-column">
+            <a href="https://www.instagram.com/shaneforvicepresident">
+              <img src="../Shane Mathis Instagram Logo.png" alt="Shane Instagram Logo" />
+            </a>
+            <a href="https://www.tiktok.com/@shaneforvicepresident">
+              <img src="../Shane Mathis TikTok Logo.png" alt="Shane TikTok Logo" />
+            </a>
+            <a href="https://www.youtube.com/@shaneforvp">
+              <img src="../Shane Mathis YouTube Logo.png" alt="Shane YouTube Logo" />
+            </a>
+          </div>
+          <div>
+            <img src="../ShaneMathis.png" alt="Shane Mathis" />
+            <h3>Shane Mathis</h3>
+            <iframe src="https://docs.google.com/document/d/e/2PACX-1vQOxpTsYyK-AojDV_v5q85MMSza2ZY8RGFNopDmccuWam2vbookr8nQkAZQkDcSmSxC79yLsQSuJGED/pub?embedded=true"></iframe>
+          </div>
+        </div>
+
+      </div>
     </main>
 
     <footer>
