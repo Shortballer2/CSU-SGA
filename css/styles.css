@@ -255,3 +255,21 @@ iframe {
     border-radius: 8px;
   }
 }
+
+@media (max-width: 768px) {
+  .candidate-content {
+    width: 100vw;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .candidate-content iframe {
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+  }
+
+  .candidate {
+    max-width: none;
+  }  
+}
