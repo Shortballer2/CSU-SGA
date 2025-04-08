@@ -223,6 +223,15 @@ iframe {
     max-width: 100%;
   }
 
+  .candidate-content {
+    width: 100%;
+  }
+
+  .candidate-content iframe {
+    width: 100%;
+    height: 300px;
+  }
+
   .social-column {
     flex-direction: row;
     justify-content: center;
@@ -239,8 +248,8 @@ iframe {
   }
 
   .candidate iframe {
-    width: 130%;
-    height: 150px; /* shorter height */
+    width: 100%;
+    height: 300px; /* shorter height */
     border: none;
     margin-top: 1rem;
     border-radius: 8px;
