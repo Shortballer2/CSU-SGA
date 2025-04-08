@@ -37,3 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// About Page toggle
+  function showCandidate(id) {
+    document.getElementById("candidate-hannah").style.display = id === "hannah" ? "flex" : "none";
+    document.getElementById("candidate-shane").style.display = id === "shane" ? "flex" : "none";
+  }
