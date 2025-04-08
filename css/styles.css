@@ -211,3 +211,34 @@ iframe {
   margin-top: 1rem;
   border-radius: 8px;
 }
+
+@media (max-width: 768px) {
+  .candidate-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .candidate {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .social-column {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .social-column img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .candidate-content img {
+    max-height: 250px;
+  }
+
+  .candidate-content iframe {
+    height: 300px;
+  }
+}
