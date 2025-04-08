@@ -11,6 +11,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <link href="/Favicon.ico" rel="icon" type="image/png"/>
+  <style>
+    /* Only these additions are needed */
+
+    @media (max-width: 768px) {
+      .candidate-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .candidate {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .candidate-content {
+        width: 100%;
+      }
+
+      .candidate-content iframe {
+        width: 100vw;
+        margin-left: -1rem;
+        max-width: none;
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="wrapper">
@@ -29,7 +56,6 @@
     <main>
       <h2>Meet the Candidates</h2>
       <div class="candidate-container">
-    
         <!-- Hannah -->
         <div class="candidate">
           <div class="social-column">
@@ -43,7 +69,7 @@
             <iframe src="https://docs.google.com/document/d/e/2PACX-1vTK5e-z2PGLvwDy3nIP6BgUFv0kO8Dh9i72Y6BhD8v_7KpcQPhgMwB6CUoorY4-FA7uO4C-b1UA3vXZ/pub?embedded=true"></iframe>
           </div>
         </div>
-    
+
         <!-- Shane -->
         <div class="candidate">
           <div class="social-column">
@@ -63,9 +89,8 @@
             <iframe src="https://docs.google.com/document/d/e/2PACX-1vQOxpTsYyK-AojDV_v5q85MMSza2ZY8RGFNopDmccuWam2vbookr8nQkAZQkDcSmSxC79yLsQSuJGED/pub?embedded=true"></iframe>
           </div>
         </div>
-    
       </div>
-    </main>    
+    </main>
 
     <footer>
       <p>© 2025 Dawson & Mathis Campaign. All rights reserved.</p>
