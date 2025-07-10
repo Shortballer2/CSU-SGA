@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Dawson & Mathis campaign site loaded.");
+  console.log("CSU SGA site loaded.");
 })
 
 let cooldown = false;
@@ -37,30 +37,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
-// About Page toggle
-  function showCandidate(id) {
-    const hannah = document.getElementById("candidate-hannah");
-    const shane = document.getElementById("candidate-shane");
-
-    // Hide both with slide-out
-    [hannah, shane].forEach(c => {
-      c.classList.remove("show");
-      c.classList.add("hide");
-    });
-
-    // Delay to let hide animation finish before showing the new one
-    setTimeout(() => {
-      if (id === "hannah") {
-        hannah.classList.remove("hide");
-        hannah.classList.add("show");
-        shane.style.display = "none";
-        hannah.style.display = "flex";
-      } else {
-        shane.classList.remove("hide");
-        shane.classList.add("show");
-        hannah.style.display = "none";
-        shane.style.display = "flex";
-      }
-    }, 200); // Match this with your CSS animation duration
-  }
