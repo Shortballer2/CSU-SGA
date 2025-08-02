@@ -1,4 +1,5 @@
 let cooldown = false;
+let submitted = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("CSU SGA site loaded.");
