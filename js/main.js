@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("CSU SGA site loaded.");
-})
+});
 
+let submitted = false;
 let cooldown = false;
 
 function showSuccessMessage() {
