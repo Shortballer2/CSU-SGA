@@ -1,50 +1,23 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-  padding: 2rem;
-}
-
-.button {
-  display: inline-block;
-  margin: 1rem 0.5rem; /* adds vertical and horizontal space between buttons */
-}
-
-footer {
-  background-color: var(--primary);
-  color: var(--light);
-  padding: 1rem;
-  text-align: center;
-}
-
-/* styles.css */
+/* Modernized styles for CSU SGA site */
 
 :root {
-  /* Charleston Southern University color palette */
   --primary: #002855;
   --secondary: #a8996e;
-  --tertiary: #fcb900;
-  --neutral: #edf2f7;
+  --accent: #fcb900;
+  --neutral: #f7f9fc;
   --dark: #1a202c;
-  --light: #fff;
+  --light: #ffffff;
 }
 
-html, body {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 body {
@@ -52,35 +25,83 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--neutral);
   color: var(--dark);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-header, footer {
-  background: var(--primary);
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+
+/* Header / Navigation */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, #004b8d 100%);
   color: var(--light);
-  padding: 1rem;
-  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  header .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
 }
 
 nav a {
   color: var(--light);
-  margin: 0 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--secondary);
+  color: var(--dark);
 }
 
 nav .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 nav .dropdown-content {
   display: none;
   position: absolute;
+  top: 100%;
+  left: 0;
   background: var(--primary);
+  border-radius: 6px;
+  min-width: 180px;
   padding: 0.5rem 0;
-  min-width: 160px;
-  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
 }
 
 nav .dropdown-content a {
@@ -88,48 +109,69 @@ nav .dropdown-content a {
   margin: 0;
   padding: 0.5rem 1rem;
   color: var(--light);
-  text-align: left;
 }
 
 nav .dropdown-content a:hover {
   background: var(--secondary);
+  color: var(--dark);
 }
 
 nav .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* Main Content */
 main {
-  padding: 2rem;
   flex: 1;
 }
 
-footer {
-  font-size: 0.9rem;
+main.container {
+  padding: 2rem 0;
 }
 
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: var(--light);
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.hero .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Buttons */
+
 .button {
-  background: var(--tertiary);
-  color: var(--dark);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--light);
   border: none;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
   font-size: 1rem;
-  cursor: pointer;
   text-decoration: none;
   display: inline-block;
-  margin: 1rem 0.5rem 0 0.5rem;
+  margin: 0.5rem;
   border-radius: 8px;
-  transition: background 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
 .button:hover {
-  background: #d4a500;
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background: var(--secondary);
+  color: var(--dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-form input, form select, form textarea {
+/* Forms */
+
+form input,
+form select,
+form textarea {
   display: block;
   width: 100%;
   margin-bottom: 1rem;
@@ -149,41 +191,33 @@ form button {
   cursor: pointer;
 }
 
+/* Embeds */
+
 iframe {
   max-width: 100%;
   border-radius: 10px;
   margin-top: 1rem;
 }
 
-.wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+/* Footer */
+footer {
+  background: var(--primary);
+  color: var(--light);
+  margin-top: auto;
+  font-size: 0.9rem;
 }
 
-.form-success, .form-error {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-weight: bold;
+footer .container {
   text-align: center;
+  padding: 1.5rem 0;
 }
 
-.form-success {
-  background-color: #d4edda;
-  color: #155724;
-}
+/* Candidate cards */
 
-.form-error {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-/* About */
 .candidate-container {
   display: flex;
   justify-content: center;
-  align-items: center; /* <-- vertically align */
+  align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
   max-width: 1200px;
@@ -196,10 +230,10 @@ iframe {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
-  background-color: var(--neutral);
+  background-color: var(--light);
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   flex: 1 1 500px;
   max-width: 550px;
   transition: all 0.3s ease;
@@ -232,7 +266,7 @@ iframe {
   max-height: 300px;
   object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .candidate-content h3 {
@@ -267,18 +301,9 @@ iframe {
   }
 
   .candidate {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    background-color: var(--neutral);
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    flex: 1 1 500px;
-    max-width: 550px;
     justify-content: center;
     align-items: center;
-  }  
+  }
 
   .candidate-content {
     width: 100%;
@@ -307,3 +332,4 @@ iframe {
     max-height: 250px;
   }
 }
+

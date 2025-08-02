@@ -15,81 +15,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/Favicon.ico" />
 
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
-    .wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main {
-      flex: 1;
-      padding: 2rem;
-    }
-
-    .button {
-      display: inline-block;
-      margin: 1rem 0.5rem; /* adds vertical and horizontal space between buttons */
-    }
-
-    footer {
-      background-color: var(--primary);
-      color: var(--light);
-      padding: 1rem;
-      text-align: center;
-    }
-  </style>
 </head>
-<body>
+  <body>
   <div class="wrapper">
 
     <!-- Header -->
     <header>
-      <h1>Home</h1>
-      <nav>
-        <a href="/">Home</a>
-        <div class="dropdown">
-          <a href="/About/">About</a>
-          <div class="dropdown-content">
-            <a href="/About/Executives/">Executive Officers</a>
-            <a href="/About/Cabinet/">Cabinet</a>
-            <a href="/About/Senators/">Senators</a>
+      <div class="container">
+        <h1>Home</h1>
+        <nav>
+          <a href="/">Home</a>
+          <div class="dropdown">
+            <a href="/About/">About</a>
+            <div class="dropdown-content">
+              <a href="/About/Executives/">Executive Officers</a>
+              <a href="/About/Cabinet/">Cabinet</a>
+              <a href="/About/Senators/">Senators</a>
+            </div>
           </div>
-        </div>
-        <a href="/Events/">Events</a>
-        <a href="/Media/">Media</a>
-        <a href="/Idea/">Submit Idea</a>
-        <a href="/Contact/">Contact</a>
-      </nav>
+          <a href="/Events/">Events</a>
+          <a href="/Media/">Media</a>
+          <a href="/Idea/">Submit Idea</a>
+          <a href="/Contact/">Contact</a>
+        </nav>
+      </div>
     </header>
 
     <!-- Main Content -->
     <main>
-      <h2>Welcome to the CSU SGA!</h2>
-      <p>The Student Government Association represents the voice of Charleston Southern University students.</p>
-
-          <!--Homepage-->
-          <p>
-                Use this site to learn about SGA initiatives, contact us and submit ideas or feedback.
-          </p>
-      <!-- Buttons with spacing -->
-      <a class="button" href="/About/">About SGA</a>
-      <a class="button" href="/Contact/">Contact Us</a>
-      <a class="button" href="/Idea/">Submit an Idea</a>
-      <a class="button" href="/Events/">See Events</a>
-      <a class="button" href="/Media/">View pictures and videos</a>
+      <section class="hero">
+        <div class="container">
+          <h2>Welcome to the CSU SGA!</h2>
+          <p>The Student Government Association represents the voice of Charleston Southern University students.</p>
+          <p>Use this site to learn about SGA initiatives, contact us and submit ideas or feedback.</p>
+          <div class="buttons">
+            <a class="button" href="/About/">About SGA</a>
+            <a class="button" href="/Contact/">Contact Us</a>
+            <a class="button" href="/Idea/">Submit an Idea</a>
+            <a class="button" href="/Events/">See Events</a>
+            <a class="button" href="/Media/">View pictures and videos</a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer>
-      <p>© 2025 Charleston Southern University Student Government Association. All rights reserved.</p>
+      <div class="container">
+        <p>© 2025 Charleston Southern University Student Government Association. All rights reserved.</p>
+      </div>
     </footer>
-    
+
   </div>
-</body>
+  </body>
 </html>
