@@ -1,8 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("CSU SGA site loaded.");
-})
-
 let cooldown = false;
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("CSU SGA site loaded.");
+
+  const reveals = document.querySelectorAll(".reveal");
+  if (reveals.length) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    reveals.forEach(el => observer.observe(el));
+  }
+
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      if (cooldown) {
+        e.preventDefault();
+        alert("⏱ Please wait 60 seconds before submitting again.");
+      }
+    });
+  }
+});
 
 function showSuccessMessage() {
   document.getElementById("form-success").style.display = "block";
@@ -25,15 +48,4 @@ function showSuccessMessage() {
   }
 }
 
-// Prevent resubmission manually
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      if (cooldown) {
-        e.preventDefault();
-        alert("⏱ Please wait 60 seconds before submitting again.");
-      }
-    });
-  }
-});
+// Prevent resubmission manually handled in DOMContentLoaded above
