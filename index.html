@@ -15,35 +15,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/Favicon.ico" />
 
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
-    .wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main {
-      flex: 1;
-      padding: 2rem;
-    }
-
-    .button {
-      display: inline-block;
-      margin: 1rem 0.5rem; /* adds vertical and horizontal space between buttons */
-    }
-
-    footer {
-      background-color: var(--primary);
-      color: var(--light);
-      padding: 1rem;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
   <div class="wrapper">
@@ -53,7 +24,14 @@
       <h1>Home</h1>
       <nav>
         <a href="/">Home</a>
-        <a href="/About/">About</a>
+        <div class="dropdown">
+          <a href="/About/">About</a>
+          <div class="dropdown-content">
+            <a href="/About/Executives/">Executive Officers</a>
+            <a href="/About/Cabinet/">Cabinet</a>
+            <a href="/About/Senators/">Senators</a>
+          </div>
+        </div>
         <a href="/Events/">Events</a>
         <a href="/Media/">Media</a>
         <a href="/Idea/">Submit Idea</a>
