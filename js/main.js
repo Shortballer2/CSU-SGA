@@ -29,56 +29,60 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const aboutPages = [
-    "/About/",
-    "/About/Executives/",
-    "/About/Cabinet/",
-    "/About/Senators/",
-  ];
-  const currentPath = window.location.pathname;
-  const pageIndex = aboutPages.indexOf(currentPath);
-  if (pageIndex !== -1) {
-    let navigating = false;
+  const segments = window.location.pathname
+    .replace(/\/index\.html$/, "")
+    .split("/")
+    .filter(Boolean);
+  const aboutIdx = segments.indexOf("About");
+  if (aboutIdx !== -1) {
+    const subpages = ["", "Executives", "Cabinet", "Senators"];  
+    const currentSub = segments[aboutIdx + 1] || "";
+    const pageIndex = subpages.indexOf(currentSub);
+    if (pageIndex !== -1) {
+      let navigating = false;
 
-    const goTo = (direction) => {
-      const target = pageIndex + direction;
-      if (target >= 0 && target < aboutPages.length) {
-        navigating = true;
-        window.location.href = aboutPages[target];
-      }
-    };
-
-    window.addEventListener(
-      "wheel",
-      (e) => {
-        if (navigating) return;
-        if (e.deltaY > 0) {
-          e.preventDefault();
-          goTo(1);
-        } else if (e.deltaY < 0) {
-          e.preventDefault();
-          goTo(-1);
+      const goTo = (direction) => {
+        const target = pageIndex + direction;
+        if (target >= 0 && target < subpages.length) {
+          navigating = true;
+          const newSegments = segments.slice(0, aboutIdx + 1);
+          if (subpages[target]) newSegments.push(subpages[target]);
+          window.location.href = "/" + newSegments.join("/") + "/";
         }
-      },
-      { passive: false }
-    );
+      };
 
-    let touchStartY = null;
-    window.addEventListener("touchstart", (e) => {
-      touchStartY = e.touches[0].clientY;
-    });
-    window.addEventListener(
-      "touchend",
-      (e) => {
-        if (touchStartY === null) return;
-        const deltaY = touchStartY - e.changedTouches[0].clientY;
-        if (Math.abs(deltaY) > 50) {
-          goTo(deltaY > 0 ? 1 : -1);
-        }
-        touchStartY = null;
-      },
-      { passive: true }
-    );
+      window.addEventListener(
+        "wheel",
+        (e) => {
+          if (navigating) return;
+          if (e.deltaY > 0) {
+            e.preventDefault();
+            goTo(1);
+          } else if (e.deltaY < 0) {
+            e.preventDefault();
+            goTo(-1);
+          }
+        },
+        { passive: false }
+      );
+
+      let touchStartY = null;
+      window.addEventListener("touchstart", (e) => {
+        touchStartY = e.touches[0].clientY;
+      });
+      window.addEventListener(
+        "touchend",
+        (e) => {
+          if (touchStartY === null) return;
+          const deltaY = touchStartY - e.changedTouches[0].clientY;
+          if (Math.abs(deltaY) > 50) {
+            goTo(deltaY > 0 ? 1 : -1);
+          }
+          touchStartY = null;
+        },
+        { passive: true }
+      );
+    }
   }
 });
 
