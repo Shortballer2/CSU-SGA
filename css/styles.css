@@ -68,6 +68,36 @@ nav a {
   font-weight: bold;
 }
 
+nav .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+nav .dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--primary);
+  padding: 0.5rem 0;
+  min-width: 160px;
+  z-index: 1;
+}
+
+nav .dropdown-content a {
+  display: block;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  color: var(--light);
+  text-align: left;
+}
+
+nav .dropdown-content a:hover {
+  background: var(--secondary);
+}
+
+nav .dropdown:hover .dropdown-content {
+  display: block;
+}
+
 main {
   padding: 2rem;
   flex: 1;
