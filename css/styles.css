@@ -32,11 +32,12 @@ footer {
 /* styles.css */
 
 :root {
-  --primary: #1B2CC1;
-  --secondary: #92140C;
-  --tertiary: #FFCF99;
-  --neutral: #bababb;
-  --dark: #222;
+  /* Charleston Southern University color palette */
+  --primary: #002855;
+  --secondary: #a8996e;
+  --tertiary: #fcb900;
+  --neutral: #edf2f7;
+  --dark: #1a202c;
   --light: #fff;
 }
 
@@ -123,7 +124,7 @@ footer {
 }
 
 .button:hover {
-  background: #f5b86a;
+  background: #d4a500;
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
