@@ -20,10 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
   if (form) {
     form.addEventListener("submit", function (e) {
-      if (cooldown) {
+      if (cooldown || submitted) {
         e.preventDefault();
         alert("⏱ Please wait 60 seconds before submitting again.");
+        return;
       }
+      submitted = true;
     });
   }
 
