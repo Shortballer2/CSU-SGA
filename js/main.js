@@ -6,11 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const reveals = document.querySelectorAll(".reveal");
   if (reveals.length) {
-    const observer = new IntersectionObserver((entries, obs) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          obs.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove("visible");
         }
       });
     }, { threshold: 0.2 });
@@ -77,33 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       { passive: true }
     );
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("CSU SGA site loaded.");
-
-  const reveals = document.querySelectorAll(".reveal");
-  if (reveals.length) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    reveals.forEach(el => observer.observe(el));
-  }
-
-  const form = document.querySelector("form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      if (cooldown) {
-        e.preventDefault();
-        alert("⏱ Please wait 60 seconds before submitting again.");
-      }
-    });
   }
 });
 
