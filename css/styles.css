@@ -118,12 +118,25 @@ nav a {
   backdrop-filter: blur(2px);
   background-color: rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, color 0.3s ease;
+  display: block;
 }
 
 nav a:hover,
 nav a:focus {
   background-color: var(--secondary);
   color: var(--dark);
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* Main Content */
