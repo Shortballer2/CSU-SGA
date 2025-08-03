@@ -126,40 +126,6 @@ nav a:focus {
   color: var(--dark);
 }
 
-nav .dropdown {
-  position: relative;
-}
-
-nav .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: rgba(0, 40, 85, 0.9);
-  border-radius: 6px;
-  min-width: 180px;
-  padding: 0.5rem 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-}
-
-nav .dropdown-content a {
-  display: block;
-  margin: 0;
-  padding: 0.5rem 1rem;
-  color: var(--light);
-  background: transparent;
-}
-
-nav .dropdown-content a:hover {
-  background: var(--secondary);
-  color: var(--dark);
-}
-
-nav .dropdown:hover .dropdown-content {
-  display: block;
-}
-
 /* Main Content */
 
 main {
