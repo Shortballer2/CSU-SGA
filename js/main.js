@@ -1,6 +1,27 @@
 let cooldown = false;
 let submitted = false;
 
+function showSuccessMessage() {
+  document.getElementById("form-success").style.display = "block";
+  document.getElementById("idea-form")?.reset();
+  document.getElementById("contact-form")?.reset();
+  submitted = false;
+
+  // Disable submit button for 60 seconds
+  const button = document.querySelector("form button[type='submit']");
+  if (button) {
+    button.disabled = true;
+    button.textContent = "Submitted (wait 60s)";
+    cooldown = true;
+
+    setTimeout(() => {
+      button.disabled = false;
+      button.textContent = "Submit";
+      cooldown = false;
+    }, 60000); // 60,000 ms = 60 seconds
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("CSU SGA site loaded.");
 
@@ -35,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .filter(Boolean);
   const aboutIdx = segments.indexOf("About");
   if (aboutIdx !== -1) {
-    const subpages = ["", "Executives", "Cabinet", "Senators"];  
+    const subpages = ["", "Executives", "Cabinet", "Senators"];
     const currentSub = segments[aboutIdx + 1] || "";
     const pageIndex = subpages.indexOf(currentSub);
     if (pageIndex !== -1) {
@@ -85,26 +106,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
-
-function showSuccessMessage() {
-  document.getElementById("form-success").style.display = "block";
-  document.getElementById("idea-form")?.reset();
-  document.getElementById("contact-form")?.reset();
-  submitted = false;
-
-  // Disable submit button for 60 seconds
-  const button = document.querySelector("form button[type='submit']");
-  if (button) {
-    button.disabled = true;
-    button.textContent = "Submitted (wait 60s)";
-    cooldown = true;
-
-    setTimeout(() => {
-      button.disabled = false;
-      button.textContent = "Submit";
-      cooldown = false;
-    }, 60000); // 60,000 ms = 60 seconds
-  }
-}
-
-// Prevent resubmission manually handled in DOMContentLoaded above
