@@ -28,56 +28,68 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const aboutPages = [
-    "/About/",
-    "/About/Executives/",
-    "/About/Cabinet/",
-    "/About/Senators/",
-  ];
-  const currentPath = window.location.pathname;
-  const pageIndex = aboutPages.indexOf(currentPath);
-  if (pageIndex !== -1) {
+  const aboutContainer = document.querySelector('.about-page');
+  if (aboutContainer) {
+    const sections = aboutContainer.querySelectorAll('.snap-section');
+    const sectionArray = Array.from(sections);
+    let index = 0;
     let navigating = false;
 
-    const goTo = (direction) => {
-      const target = pageIndex + direction;
-      if (target >= 0 && target < aboutPages.length) {
-        navigating = true;
-        window.location.href = aboutPages[target];
-      }
+    const scrollTo = (i) => {
+      if (i < 0 || i >= sectionArray.length) return;
+      navigating = true;
+      sectionArray[i].scrollIntoView({ behavior: 'smooth' });
+      index = i;
+      setTimeout(() => (navigating = false), 1000);
     };
 
     window.addEventListener(
-      "wheel",
+      'wheel',
       (e) => {
         if (navigating) return;
-        if (e.deltaY > 0) {
+        if (e.deltaY > 0 && index < sectionArray.length - 1) {
           e.preventDefault();
-          goTo(1);
-        } else if (e.deltaY < 0) {
+          scrollTo(index + 1);
+        } else if (e.deltaY < 0 && index > 0) {
           e.preventDefault();
-          goTo(-1);
+          scrollTo(index - 1);
         }
       },
       { passive: false }
     );
 
     let touchStartY = null;
-    window.addEventListener("touchstart", (e) => {
+    window.addEventListener('touchstart', (e) => {
       touchStartY = e.touches[0].clientY;
     });
     window.addEventListener(
-      "touchend",
+      'touchend',
       (e) => {
         if (touchStartY === null) return;
         const deltaY = touchStartY - e.changedTouches[0].clientY;
         if (Math.abs(deltaY) > 50) {
-          goTo(deltaY > 0 ? 1 : -1);
+          if (deltaY > 0 && index < sectionArray.length - 1) {
+            scrollTo(index + 1);
+          } else if (deltaY < 0 && index > 0) {
+            scrollTo(index - 1);
+          }
         }
         touchStartY = null;
       },
       { passive: true }
     );
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            index = sectionArray.indexOf(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    sectionArray.forEach((sec) => io.observe(sec));
   }
 });
 
