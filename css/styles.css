@@ -217,13 +217,13 @@ main {
 
 /* Feature cards */
 
-.features {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  max-width: 1200px;
-  margin: 4rem auto;
-  padding: 0 1rem;
+
+.full-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
 }
 
 .feature {
