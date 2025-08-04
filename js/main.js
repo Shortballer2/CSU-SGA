@@ -4,6 +4,25 @@ let submitted = false;
 document.addEventListener("DOMContentLoaded", () => {
   console.log("CSU SGA site loaded.");
 
+  // Scroll-to-top button
+  const scrollBtn = document.createElement('button');
+  scrollBtn.className = 'scroll-top';
+  scrollBtn.setAttribute('aria-label', 'Scroll to top');
+  scrollBtn.textContent = '^';
+  document.body.appendChild(scrollBtn);
+
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      scrollBtn.classList.add('show');
+    } else {
+      scrollBtn.classList.remove('show');
+    }
+  });
+
   const reveals = document.querySelectorAll(".reveal");
   if (reveals.length) {
     const observer = new IntersectionObserver((entries) => {
