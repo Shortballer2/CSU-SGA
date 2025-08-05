@@ -434,6 +434,22 @@ footer {
   }
 }
 
+/* Member grid styles for cabinet and senator sections */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.member-card {
+  background: var(--light);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
 /* Scroll-to-top button */
 .scroll-top {
   position: fixed;
