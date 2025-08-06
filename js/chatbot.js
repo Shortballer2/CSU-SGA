@@ -48,7 +48,8 @@ window.addEventListener("DOMContentLoaded", () => {
   // create toggle button
   const chatBtn = document.createElement("button");
   chatBtn.id = "chatbot-toggle";
-  chatBtn.textContent = "Questions? Chatbot";
+  chatBtn.setAttribute("aria-label", "Open chatbot");
+  chatBtn.innerHTML = '<i class="fa-solid fa-comment-dots"></i>';
   document.body.appendChild(chatBtn);
 
   // create popup
@@ -58,12 +59,12 @@ window.addEventListener("DOMContentLoaded", () => {
   popup.innerHTML = `
     <div class="chatbot-header">
       <span>CSU SGA Chatbot</span>
-      <button id="chatbot-close" type="button">&times;</button>
+      <button id="chatbot-close" type="button" aria-label="Close">&times;</button>
     </div>
     <div id="chat-messages" class="chat-messages"></div>
     <form id="chat-form" class="chat-input">
       <input id="user-input" type="text" placeholder="Type your message..." autocomplete="off" />
-      <button class="button" type="submit">Send</button>
+      <button type="submit" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
     </form>
   `;
   document.body.appendChild(popup);
