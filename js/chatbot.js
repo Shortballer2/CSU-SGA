@@ -1,5 +1,4 @@
-const API_URL = "https://api.openai.com/v1/chat/completions";
-const API_KEY = window.OPENAI_API_KEY || "YOUR_OPENAI_API_KEY";
+const API_URL = "/api/chat";
 
 const messages = [
   {
@@ -30,13 +29,9 @@ async function sendMessage(userText) {
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages
-      })
+      body: JSON.stringify({ messages })
     });
 
     const data = await response.json();
