@@ -76,7 +76,9 @@ window.addEventListener("DOMContentLoaded", () => {
   chatBtn.addEventListener("click", () => {
     popup.classList.toggle("hidden");
     if (!popup.classList.contains("hidden") && messages.length === 1) {
-      addMessage("assistant", "Hi! Would you like to submit an idea or contact us?");
+      const greeting = "Hi! Would you like to submit an idea or contact us?";
+      addMessage("assistant", greeting);
+      messages.push({ role: "assistant", content: greeting });
     }
   });
 
