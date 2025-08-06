@@ -4,24 +4,43 @@ let submitted = false;
 document.addEventListener("DOMContentLoaded", () => {
   console.log("CSU SGA site loaded.");
 
-  // Scroll-to-top button
+  // Scroll arrows
   const scrollBtn = document.createElement('button');
   scrollBtn.className = 'scroll-top';
   scrollBtn.setAttribute('aria-label', 'Scroll to top');
-  scrollBtn.textContent = '^';
+  scrollBtn.textContent = '↑';
   document.body.appendChild(scrollBtn);
+
+  const scrollDown = document.createElement('button');
+  scrollDown.className = 'scroll-down';
+  scrollDown.setAttribute('aria-label', 'Scroll to bottom');
+  scrollDown.textContent = '↓';
+  document.body.appendChild(scrollDown);
 
   scrollBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  window.addEventListener('scroll', () => {
+  scrollDown.addEventListener('click', () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  });
+
+  const handleScrollButtons = () => {
     if (window.scrollY > 200) {
       scrollBtn.classList.add('show');
     } else {
       scrollBtn.classList.remove('show');
     }
-  });
+
+    if (window.innerHeight + window.scrollY < document.body.offsetHeight - 200) {
+      scrollDown.classList.add('show');
+    } else {
+      scrollDown.classList.remove('show');
+    }
+  };
+
+  window.addEventListener('scroll', handleScrollButtons);
+  handleScrollButtons();
 
   const reveals = document.querySelectorAll(".reveal");
   if (reveals.length) {
