@@ -14,6 +14,7 @@ Ask questions one at a time and keep responses short. After collecting informati
 
 function addMessage(role, text) {
   const msgContainer = document.getElementById("chat-messages");
+  if (!msgContainer) return;
   const div = document.createElement("div");
   div.className = `chat-${role}`;
   div.textContent = text;
@@ -48,11 +49,44 @@ async function sendMessage(userText) {
   }
 }
 
-// Initialize chatbot
 window.addEventListener("DOMContentLoaded", () => {
+  // create toggle button
+  const chatBtn = document.createElement("button");
+  chatBtn.id = "chatbot-toggle";
+  chatBtn.textContent = "Questions? Chatbot";
+  document.body.appendChild(chatBtn);
+
+  // create popup
+  const popup = document.createElement("div");
+  popup.id = "chatbot-popup";
+  popup.classList.add("hidden");
+  popup.innerHTML = `
+    <div class="chatbot-header">
+      <span>CSU SGA Chatbot</span>
+      <button id="chatbot-close" type="button">&times;</button>
+    </div>
+    <div id="chat-messages" class="chat-messages"></div>
+    <form id="chat-form" class="chat-input">
+      <input id="user-input" type="text" placeholder="Type your message..." autocomplete="off" />
+      <button class="button" type="submit">Send</button>
+    </form>
+  `;
+  document.body.appendChild(popup);
+
   const form = document.getElementById("chat-form");
   const input = document.getElementById("user-input");
-  addMessage("assistant", "Hi! Would you like to submit an idea or contact us?");
+  const closeBtn = document.getElementById("chatbot-close");
+
+  chatBtn.addEventListener("click", () => {
+    popup.classList.toggle("hidden");
+    if (!popup.classList.contains("hidden") && messages.length === 1) {
+      addMessage("assistant", "Hi! Would you like to submit an idea or contact us?");
+    }
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+  });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -60,5 +94,9 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!text) return;
     input.value = "";
     sendMessage(text);
+  });
+
+  document.querySelectorAll(".open-chatbot").forEach((el) => {
+    el.addEventListener("click", () => chatBtn.click());
   });
 });

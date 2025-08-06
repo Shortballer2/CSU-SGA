@@ -523,3 +523,68 @@ footer {
   flex: 1;
   padding: 0.5rem;
 }
+
+/* Chatbot popup */
+#chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.75rem 1.25rem;
+  background: var(--primary);
+  color: var(--light);
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#chatbot-popup {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background: var(--light);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+#chatbot-popup.hidden {
+  display: none;
+}
+
+#chatbot-popup .chatbot-header {
+  background: var(--primary);
+  color: var(--light);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#chatbot-popup .chat-messages {
+  flex: 1;
+  padding: 0.5rem;
+  overflow-y: auto;
+}
+
+#chatbot-popup .chat-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#chatbot-popup .chat-input input {
+  flex: 1;
+  border: none;
+  padding: 0.5rem;
+}
+
+#chatbot-popup .chat-input button {
+  border: none;
+  background: var(--primary);
+  color: var(--light);
+  padding: 0 1rem;
+}
