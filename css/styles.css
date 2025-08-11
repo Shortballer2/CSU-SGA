@@ -624,3 +624,15 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
+#media-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+#media-list img,
+#media-list video {
+  width: 100%;
+  border-radius: 8px;
+}
