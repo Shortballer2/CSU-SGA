@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <script src="/js/main.js" defer></script>
 <script src="/js/chatbot.js" defer></script>
+<script src="/js/content.js" defer></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
@@ -29,15 +30,16 @@
 </header>
 <main>
         <h2>SGA Calendar</h2>
-	<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&title=SGA%20Events&src=MmQ0NzBkMGE1M2M2MjJlMWY5OGRmNGExOWU5MzQ0MmU4ZDRhM2Y4ZjQwNjc1YzdjYjk5YzJmMDFjZjlkY2Y4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&title=SGA%20Events&src=MmQ0NzBkMGE1M2M2MjJlMWY5OGRmNGExOWU5MzQ0MmU4ZDRhM2Y4ZjQwNjc1YzdjYjk5YzJmMDFjZjlkY2Y4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        <ul id="events-list"></ul>
         <p>You can view all of our upcoming events using the button below:</p>
-	<a 
-	  class="button" 
-	  href="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&title=SGA%20Events&src=MmQ0NzBkMGE1M2M2MjJlMWY5OGRmNGExOWU5MzQ0MmU4ZDRhM2Y4ZjQwNjc1YzdjYjk5YzJmMDFjZjlkY2Y4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" 
-	  target="_blank" 
-	  rel="noopener noreferrer">
-	  📅 View Full Calendar
-	</a>
+        <a
+          class="button"
+          href="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&title=SGA%20Events&src=MmQ0NzBkMGE1M2M2MjJlMWY5OGRmNGExOWU5MzQ0MmU4ZDRhM2Y4ZjQwNjc1YzdjYjk5YzJmMDFjZjlkY2Y4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161"
+          target="_blank"
+          rel="noopener noreferrer">
+          📅 View Full Calendar
+        </a>
   </main>
 <footer>
 <p>© 2025 Charleston Southern University Student Government Association. All rights reserved.</p>
