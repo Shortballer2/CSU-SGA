@@ -1,8 +1,8 @@
 const express = require('express');
-const fetch = global.fetch;
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { HfInference } = require('@huggingface/inference');
 
 const app = express();
 app.use(express.json());
@@ -53,31 +53,26 @@ app.put('/api/content', (req, res) => {
 });
 
 app.post('/api/chat', async (req, res) => {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.HF_API_KEY;
   if (!apiKey) {
-    res.status(500).json({ error: 'Server misconfiguration: missing OPENAI_API_KEY' });
+    res
+      .status(500)
+      .json({ error: 'Server misconfiguration: missing HF_API_KEY' });
     return;
   }
 
   const { messages } = req.body;
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages
-      })
+    const hf = new HfInference(apiKey);
+    const response = await hf.chatCompletion({
+      model: 'microsoft/Phi-3-mini-4k-instruct',
+      messages
     });
 
-    const data = await response.json();
-    res.status(response.status).json(data);
+    res.status(200).json(response);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to fetch from OpenAI' });
+    res.status(500).json({ error: 'Failed to fetch from Hugging Face' });
   }
 });
 
