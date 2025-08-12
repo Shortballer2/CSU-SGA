@@ -11,12 +11,13 @@ app.use(express.static(__dirname));
 const contentFile = path.join(__dirname, 'content.json');
 let sessionToken = null;
 
+// Default admin credentials if environment variables are not set
+const ADMIN_USER = process.env.ADMIN_USER || 'SGAexecutive';
+const ADMIN_PASS = process.env.ADMIN_PASS || 'eVery0neshouldjoin5GA';
+
 app.post('/api/login', (req, res) => {
-  const { username, password } = req.body;
-  if (
-    username === process.env.ADMIN_USER &&
-    password === process.env.ADMIN_PASS
-  ) {
+  const { username = '', password = '' } = req.body || {};
+  if (username.trim() === ADMIN_USER && password === ADMIN_PASS) {
     sessionToken = crypto.randomBytes(16).toString('hex');
     res.json({ token: sessionToken });
   } else {

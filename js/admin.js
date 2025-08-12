@@ -87,8 +87,9 @@ function addHandlers() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  document.getElementById('login-btn').addEventListener('click', async () => {
-    const u = document.getElementById('username').value;
+  document.getElementById('login-btn').addEventListener('click', async e => {
+    e.preventDefault();
+    const u = document.getElementById('username').value.trim();
     const p = document.getElementById('password').value;
     try {
       await apiLogin(u, p);
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('editor').style.display = 'block';
       renderAll();
       addHandlers();
-    } catch (e) {
+    } catch (err) {
       alert('Login failed');
     }
   });
