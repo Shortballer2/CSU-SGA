@@ -42,10 +42,17 @@ function renderMedia(id, media) {
   const container = document.getElementById(id);
   container.innerHTML = '';
   media.forEach(m => {
-    const link = document.createElement('a');
-    link.href = m.url;
-    link.textContent = m.url;
-    link.target = '_blank';
-    container.appendChild(link);
+    const ext = m.url.split('.').pop().toLowerCase();
+    if (['mp4', 'webm', 'ogg'].includes(ext)) {
+      const video = document.createElement('video');
+      video.src = m.url;
+      video.controls = true;
+      container.appendChild(video);
+    } else {
+      const img = document.createElement('img');
+      img.src = m.url;
+      img.alt = '';
+      container.appendChild(img);
+    }
   });
 }
