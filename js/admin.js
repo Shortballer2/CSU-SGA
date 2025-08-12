@@ -1,18 +1,6 @@
 let token = localStorage.getItem('token');
 let contentData = null;
 
-async function apiLogin(username, password) {
-  const res = await fetch('/api/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password })
-  });
-  if (!res.ok) throw new Error('Login failed');
-  const data = await res.json();
-  token = data.token;
-  localStorage.setItem('token', token);
-}
-
 async function loadContent() {
   const res = await fetch('/api/content');
   contentData = await res.json();
@@ -120,26 +108,16 @@ function addHandlers() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  document.getElementById('login-btn').addEventListener('click', async () => {
-    const u = document.getElementById('username').value;
-    const p = document.getElementById('password').value;
-    try {
-      await apiLogin(u, p);
-      await loadContent();
-      document.getElementById('login').style.display = 'none';
-      document.getElementById('editor').style.display = 'block';
-      renderAll();
-      addHandlers();
-    } catch (e) {
-      alert('Login failed');
-    }
-  });
-
-  if (token) {
+  if (!token) {
+    window.location.href = '/';
+    return;
+  }
+  try {
     await loadContent();
-    document.getElementById('login').style.display = 'none';
     document.getElementById('editor').style.display = 'block';
     renderAll();
     addHandlers();
+  } catch (e) {
+    alert('Failed to load content');
   }
 });
