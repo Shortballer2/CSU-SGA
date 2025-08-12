@@ -1,6 +1,11 @@
 let token = localStorage.getItem('token');
 let contentData = null;
 
+async function loadContent() {
+  const res = await fetch('/api/content');
+  contentData = await res.json();
+}
+
 async function apiLogin(username, password) {
   const res = await fetch('/api/login', {
     method: 'POST',
@@ -11,11 +16,6 @@ async function apiLogin(username, password) {
   const data = await res.json();
   token = data.token;
   localStorage.setItem('token', token);
-}
-
-async function loadContent() {
-  const res = await fetch('/api/content');
-  contentData = await res.json();
 }
 
 function createEntry(container, item, fields) {
@@ -38,12 +38,45 @@ function renderSection(containerId, items, fields) {
   items.forEach(item => createEntry(container, item, fields));
 }
 
+function renderMediaSection() {
+  const container = document.getElementById('media-form');
+  container.innerHTML = '';
+  contentData.media.forEach(item => {
+    const div = document.createElement('div');
+    if (item.url) {
+      const link = document.createElement('a');
+      link.href = item.url;
+      link.textContent = item.url;
+      link.target = '_blank';
+      div.appendChild(link);
+    }
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.addEventListener('change', async e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const formData = new FormData();
+      formData.append('media', file);
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData
+      });
+      const data = await res.json();
+      item.url = data.url;
+      renderMediaSection();
+    });
+    div.appendChild(fileInput);
+    container.appendChild(div);
+  });
+}
+
 function renderAll() {
   renderSection('executives-form', contentData.personnel.executives, ['name', 'role']);
   renderSection('cabinet-form', contentData.personnel.cabinet, ['name', 'role']);
   renderSection('senators-form', contentData.personnel.senators, ['name', 'role']);
   renderSection('events-form', contentData.events, ['date', 'title']);
-  renderSection('media-form', contentData.media, ['url']);
+  renderMediaSection();
 }
 
 async function saveContent() {
@@ -104,10 +137,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   if (token) {
-    await loadContent();
-    document.getElementById('login').style.display = 'none';
-    document.getElementById('editor').style.display = 'block';
-    renderAll();
-    addHandlers();
+    try {
+      await loadContent();
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('editor').style.display = 'block';
+      renderAll();
+      addHandlers();
+    } catch (e) {
+      alert('Failed to load content');
+    }
   }
 });

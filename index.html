@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script src="/js/main.js" defer></script>
   <script src="/js/chatbot.js" defer></script>
+  <script src="/js/login.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
@@ -26,6 +27,9 @@
         <a href="/About/">About</a>
         <a href="/Events/">Events</a>
         <a href="/Media/">Media</a>
+        <button id="admin-login-btn" class="admin-icon" aria-label="Admin Login">
+          <i class="fa-solid fa-user"></i>
+        </button>
       </nav>
       <div class="hero-content">
         <h1>Charleston Southern University SGA</h1>
@@ -71,6 +75,17 @@
       <p>© 2025 Charleston Southern University Student Government Association. All rights reserved.</p>
     </footer>
     
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div id="login-modal" class="login-modal">
+    <div class="modal-content">
+      <span id="close-login" class="close">&times;</span>
+      <h2>Admin Login</h2>
+      <input id="login-username" placeholder="Username" />
+      <input id="login-password" type="password" placeholder="Password" />
+      <button id="login-submit">Login</button>
+    </div>
   </div>
 </body>
 </html>

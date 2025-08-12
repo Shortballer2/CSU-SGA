@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { HfInference } = require('@huggingface/inference');
+const multer = require('multer');
 
 const app = express();
 app.use(express.json());
@@ -10,7 +11,26 @@ app.use(express.static(__dirname));
 
 const contentFile = path.join(__dirname, 'content.json');
 let sessionToken = null;
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
+const storage = multer.diskStorage({
+  destination: uploadDir,
+  filename: (req, file, cb) => {
+    const unique = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    cb(null, unique + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage });
+
+function authMiddleware(req, res, next) {
+  if (req.headers.authorization !== `Bearer ${sessionToken}`) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  next();
+}
 // Default admin credentials if environment variables are not set
 const ADMIN_USER = process.env.ADMIN_USER || 'SGAexecutive';
 const ADMIN_PASS = process.env.ADMIN_PASS || 'eVery0neshouldjoin5GA';
@@ -51,6 +71,13 @@ app.put('/api/content', (req, res) => {
       res.json({ status: 'ok' });
     }
   });
+});
+
+app.post('/api/upload', authMiddleware, upload.single('media'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+  res.json({ url: `/uploads/${req.file.filename}` });
 });
 
 app.post('/api/chat', async (req, res) => {
