@@ -1,8 +1,13 @@
 let token = localStorage.getItem('token');
 let contentData = null;
 
+// Determine the base URL so the API can be reached even when the page is
+// opened directly from disk (file:// protocol).
+const origin = window.location.origin;
+const baseUrl = origin && origin.startsWith('http') ? origin : 'http://localhost:3000';
+
 async function loadContent() {
-  const res = await fetch('/api/content');
+  const res = await fetch(`${baseUrl}/api/content`);
   contentData = await res.json();
 }
 
@@ -45,7 +50,7 @@ function renderMediaSection() {
       if (!file) return;
       const formData = new FormData();
       formData.append('media', file);
-      const res = await fetch('/api/upload', {
+      const res = await fetch(`${baseUrl}/api/upload`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData
@@ -68,7 +73,7 @@ function renderAll() {
 }
 
 async function saveContent() {
-  const res = await fetch('/api/content', {
+  const res = await fetch(`${baseUrl}/api/content`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

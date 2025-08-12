@@ -4,10 +4,11 @@ const path = require('path');
 const crypto = require('crypto');
 const { HfInference } = require('@huggingface/inference');
 const multer = require('multer');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
 
 const contentFile = path.join(__dirname, 'content.json');
 let sessionToken = null;
@@ -105,6 +106,9 @@ app.post('/api/chat', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch from Hugging Face' });
   }
 });
+
+// Serve static files after API routes to ensure the endpoints work properly
+app.use(express.static(__dirname));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
