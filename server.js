@@ -4,8 +4,10 @@ const path = require('path');
 const crypto = require('crypto');
 const { HfInference } = require('@huggingface/inference');
 const multer = require('multer');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const contentFile = path.join(__dirname, 'content.json');

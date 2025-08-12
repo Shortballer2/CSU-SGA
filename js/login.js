@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const openBtn = document.getElementById('admin-login-btn');
   const closeBtn = document.getElementById('close-login');
 
+  // Determine the base URL so the API can be reached even when the page is
+  // opened directly from disk (file:// protocol).
+  const origin = window.location.origin;
+  const baseUrl = origin && origin.startsWith('http') ? origin : 'http://localhost:3000';
+
   if (openBtn) {
     openBtn.addEventListener('click', () => {
       modal.style.display = 'flex';
@@ -19,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
     try {
-      const res = await fetch('/api/login', {
+      const res = await fetch(`${baseUrl}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
