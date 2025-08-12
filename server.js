@@ -7,7 +7,6 @@ const multer = require('multer');
 
 const app = express();
 app.use(express.json());
-app.use(express.static(__dirname));
 
 const contentFile = path.join(__dirname, 'content.json');
 let sessionToken = null;
@@ -105,6 +104,9 @@ app.post('/api/chat', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch from Hugging Face' });
   }
 });
+
+// Serve static files after API routes to ensure the endpoints work properly
+app.use(express.static(__dirname));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
