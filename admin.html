@@ -11,6 +11,12 @@
   <div class="wrapper">
     <h1>Executive Editor</h1>
     <div id="editor" style="display:none;">
+      <h2>Voter Verification Roster</h2>
+      <p>Upload an Excel/CSV file with voter name and student email columns.</p>
+      <input id="voter-file" type="file" accept=".xlsx,.xls,.csv" />
+      <button id="upload-voters">Upload Voter Spreadsheet</button>
+      <p id="voter-stats"></p>
+
       <h2>Executives</h2>
       <div id="executives-form"></div>
       <button id="add-executive">Add Executive</button>
