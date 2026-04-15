@@ -11,6 +11,49 @@ async function loadContent() {
   contentData = await res.json();
 }
 
+async function loadVoterStats() {
+  const stats = document.getElementById('voter-stats');
+  const res = await fetch(`${baseUrl}/api/voters/stats`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+
+  if (!res.ok) {
+    stats.textContent = 'Unable to load voter stats.';
+    return;
+  }
+
+  const data = await res.json();
+  stats.textContent = `Registered voters: ${data.registeredVoters} | Votes cast: ${data.submittedVotes}`;
+}
+
+async function uploadVoterSpreadsheet() {
+  const fileInput = document.getElementById('voter-file');
+  const file = fileInput.files[0];
+  if (!file) {
+    alert('Please choose an Excel/CSV file first.');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('voters', file);
+
+  const res = await fetch(`${baseUrl}/api/voters/upload`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    alert(data.error || 'Failed to upload voter spreadsheet.');
+    return;
+  }
+
+  alert(`Roster uploaded. ${data.registeredVoters} voters available for verification.`);
+  fileInput.value = '';
+  loadVoterStats();
+}
+
 function createEntry(container, item, fields) {
   const div = document.createElement('div');
   fields.forEach(f => {
@@ -110,6 +153,7 @@ function addHandlers() {
     renderAll();
   });
   document.getElementById('save-btn').addEventListener('click', saveContent);
+  document.getElementById('upload-voters').addEventListener('click', uploadVoterSpreadsheet);
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -122,6 +166,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('editor').style.display = 'block';
     renderAll();
     addHandlers();
+    loadVoterStats();
   } catch (e) {
     alert('Failed to load content');
   }
